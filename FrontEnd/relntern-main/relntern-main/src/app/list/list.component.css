@@ -1,0 +1,9 @@
+#list-hover:hover{
+    background-color: #3b82f6;
+    color: white;
+    
+}
+#list-hover:hover #hover-change{
+    /* font-size: x-large; */
+    color: greenyellow;
+}

@@ -1,0 +1,8 @@
+.mat-dialog-container {
+    /* Your custom styles here */
+    background-color: black;
+    /* border-radius: 50px; */
+  }
+  app-task-status{
+    background-color: black;
+  }

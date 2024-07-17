@@ -1,0 +1,65 @@
+<style>
+  button {
+    color: #3b82f6;
+    background-color: #3b82f6;
+  }
+</style>
+
+<div class="flex min-h-full items-center justify-center bg-gray-100 hide-sb ">
+
+  <div class="max-w-md w-full mx-auto p-8 bg-white rounded-lg login-container shadow-bottom">
+    <div class="flex justify-center">
+      <img class="h-16 w-auto"
+        src="https://1000logos.net/wp-content/uploads/2021/08/Reliance-Industries-Limited-RIL-Logo-500x314.jpg"
+        alt="Your Company">
+    </div>
+    <!-- <h2 class="mt-6 text-2xl font-bold text-center text-gray-800">Sign in to Relntern account</h2> -->
+    <h2 class="mt-6 text-2xl font-bold text-center text-gray-800">Login to continue <i
+        class="fa-solid fa-arrow-right "></i></h2>
+
+    <form class="mt-8 space-y-6" action="#" method="POST">
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">UserName</label>
+        <div class="input-group mb-3">
+          <!-- <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-envelope"></i></span> -->
+          <input type="text" placeholder="username" class="w-full"
+            aria-describedby="basic-addon1" [(ngModel)]="username" name="something">
+        </div>
+        <!-- <div class="mt-1">
+          <input id="email" name="email" type="email" autocomplete="email" required class="appearance-none block w-full px-3 py-2 rounded-md border border-gray-300 placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+        </div> -->
+      </div>  
+
+      <div>
+        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+        <div class="input-group mb-3">
+          <input type="password" placeholder="Password" class="w-full"
+            aria-describedby="button-addon2" [(ngModel)]="password" name="something">
+          <!-- <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="fa-regular fa-eye"></i><i class="fa-regular fa-eye-slash"></i></button> -->
+
+        </div>
+        <!-- <div class="mt-1">
+          <input id="password" name="password" type="password" autocomplete="current-password" required class="appearance-none block w-full px-3 py-2 rounded-md border border-gray-300 placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+        </div> -->
+      </div>
+      <div>
+        <button type="submit" (click)="loginUser()"
+          class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          Sign in
+        </button>
+      </div>
+    </form>
+    <div class="mt-6 text-center">
+      <div class="">Intern Register?</div>
+      <a (click)="goToPage('signup')" class="text-sm font-medium text-indigo-600 hover:text-indigo-500 underline-offset-2"><u>Register</u></a>
+    </div>
+  </div>
+
+  <div class="right-container">
+    <p class="flex min-h-full items-center justify-center">Welcome to Relntern!</p>          
+    <div class="circle"></div>
+  </div>
+</div>
+
+

@@ -1,0 +1,160 @@
+<!-- <div class="modal-header">
+    <h3>Are you sure you want to update this record ?</h3>
+</div> -->
+
+<div class="p-4">
+    <form #updateForm="ngForm" (ngSubmit)="updateIntern()">
+        <h2 class="text-2xl font-bold mb-4">Personal Details</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            
+            <div>
+                <label class="block text-gray-700 font mb-2" for="fullname">Full Name</label>
+                <input type="text" id="fullname" name="fullname"
+                    class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Enter full name" #fullname [(ngModel)]="data.intern.fullname" required>
+            </div>
+
+            <div>
+                <label class="block text-gray-700 font mb-2" for="email">Email</label>
+                <input type="email" id="email" name="email"
+                    class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Enter email address" #internemail [(ngModel)]="data.intern.email" required>
+            </div>
+
+            <div>
+                <label class="block text-gray-700 font mb-2" for="mentor">Mentor</label>
+                <input type="mentor" id="mentor" name="mentor"
+                    class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Enter mentor name" #mentorname [(ngModel)]="data.intern.mentor" required>
+            </div>
+
+            <div>
+                <label class="block text-gray-700 font mb-2" for="mentoremail">Mentor Email</label>
+                <input type="text" id="mentoremail" name="mentoremail"
+                    class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Enter mentor's email" #mentoremail [(ngModel)]="data.intern.mentoremail" required>
+            </div>
+            <div>
+                <label class="block text-gray-700 font mb-2" for="email">Project Name</label>
+                <input type="text" id="projectname" name="projectname"
+                    class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Enter project name" #projectname [(ngModel)]="data.intern.projectname" required>
+            </div>
+            <div>
+                <label class="block text-gray-700 font mb-2" for="email">Project Status</label>
+                <input type="text" id="projectstatus" name="projectstatus"
+                    class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Enter project status" #projectstatus [(ngModel)]="data.intern.projectstatus" required>
+            </div>
+            <div>
+                <label class="block text-gray-700 font mb-2" for="startDate">Start Date</label>
+                <input type="date" id="startDate" name="startDate"
+                    class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    #startdate [(ngModel)]="data.intern.startDate" required>
+            </div>
+            <div>
+                <label class="block text-gray-700 font mb-2" for="endDate">End Date</label>
+                <input type="date" id="endDate" name="endDate"
+                    class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    #enddate [(ngModel)]="data.intern.endDate" required>
+            </div>
+            <div>
+                <label class="block text-gray-700 font mb-2" for="role">Technical Skillset</label>
+                <input type="data" id="role" name="role"
+                    class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Enter intern role" #role [(ngModel)]="data.intern.role" required>
+            </div>
+            <div >
+                <label class="block text-gray-700 font mb-2" for="reference">Reference</label>
+                <input type="text" id="reference" name="reference"
+                  class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Enter reference name here" #reference [(ngModel)]="data.intern.reference" required>
+            </div>
+
+            <div class="col-span-2">
+                <label class="block text-gray-700 font mb-2" for="association">Association</label>
+                <select id="association" name="association"
+                    class="border w-full border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    #association [(ngModel)]="data.intern.association" required>
+                    <option value="" disabled selected>Select association</option>
+                    <option value="PetChem IT">PetChem IT</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Marketing">Marketing</option>
+                    <option value="HR">HR</option>
+                </select>
+            </div>
+            
+            <h2 class="text-2xl font-bold mb-4">Academic Details</h2>
+            <div>
+
+            </div>
+            <div>
+                <label class="block text-gray-700 font mb-2" for="uniname">University Name</label>
+                <input type="text" id="uniname" name="uniname"
+                    class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Enter University Name" #uniname [(ngModel)]="data.intern.uniname" required>
+            </div>
+            <div>
+                <label class="block text-gray-700 font mb-2" for="coursename">Course Name</label>
+                <input type="text" id="coursename" name="coursename"
+                    class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Ex. BTech, BE, BBA ...etc" #coursename [(ngModel)]="data.intern.coursename" required>
+            </div>
+            <div>
+                <label class="block text-gray-700 font mb-2" for="specialization">Specialization</label>
+                <input type="text" id="specialization" name="specialization"
+                    class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Please enter your major" #specialization [(ngModel)]="data.intern.specialization" required>
+            </div>
+            <div>
+                <label class="block text-gray-700 font mb-2" for="gradyear">Graduation Date</label>
+                <input type="date" id="gradyear" name="gradyear"
+                    class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    #gradyear [(ngModel)]="data.intern.gradyear" required>
+            </div>
+
+            <div>
+                <label class="block text-gray-700 font mb-2" for="quarter">Choose Quarter</label>
+                <input type="text" id="quarter" name="quarter"
+                    class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    #gradyear [(ngModel)]="data.intern.quarter" required>
+            </div>
+
+            <div>
+                <label class="block text-gray-700 font mb-2" for="gradyear">LinkedIn Link</label>
+                <input type="text" id="linkedlink" name="linkedlink"
+                    class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    #gradyear [(ngModel)]="data.intern.linkedlink" required>
+            </div>
+
+            <div class="flex flex-col">
+                <div>
+                    <div class="block text-gray-700 font mb-2">Domain id:</div>
+                    <input  name="domainid" placeholder="Update Domain id" [(ngModel)]="data.intern.domainid"  class="border  rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mt-4">
+                    <div class="block text-gray-700 font mb-2">Remarks:</div>
+                    <textarea  name="remarks" placeholder="Enter Remarks about Intern"  [(ngModel)]="data.intern.remarks"  class="border rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="" >
+            <div class="" >
+                <div class="mt-6 flex">
+                    <div class="flex mr-auto">
+                        <button type="submit" class="btn btn-outline-primary" (click)="moveToInactive(data.intern.id)">Move to Inactive</button>
+                    </div>
+                    <div class="flex space-x-6 text-black justify-end"  >
+                         <button type="submit" class="btn btn-outline-primary" id="save-changes" >Save
+                                Changes</button>
+                        <button type="button" class="btn btn-outline-primary" (click)="closeDialog()">Close</button>
+                    </div>
+                        
+                    
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,20 @@
+.gantt-chart {
+    width: 100%;
+    height: 400px;
+    margin: 20px 0;
+  }
+
+  .task {
+    fill: #007bff;
+  }
+
+  .task-text {
+    fill: #fff;
+    font-size: 14px;
+  }
+
+  .schedule-list:hover{
+    background-color: #3b82f6;
+    color: white;
+  }
+  

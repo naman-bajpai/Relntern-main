@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relntern Manager</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+  <style>
+    .avatar {
+      vertical-align: middle;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+
+    button:hover {
+      background-color: #4CAF50;
+      color: white;
+      transition: ease 0.5s;
+    }
+
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+    }
+
+    @keyframes blink {
+      50% {
+        border-color: transparent;
+      }
+    }
+
+    #dashboard-menu:hover {
+      transform: translate(-1.5%, -1.5%);
+      transition: transform 0.45s;
+    }
+
+  </style>
+</head>
+
+<body class="md:px-6 h-auto bg-[#f8fafd]">
+  <nav>
+    <header class="bg-neutral-500 py-4">
+      <div class="container mx-auto flex justify-between items-center px-4">
+        <div class="text-black text-xl font-bold flex items-center">
+          <img class="mx-auto md:h-16 h-12 w-auto cursor-pointer"
+            src="https://1000logos.net/wp-content/uploads/2021/08/Reliance-Industries-Limited-RIL-Logo-500x314.jpg"
+            alt="Your Company" (click)="goToPage('dashboard')">
+        </div>
+        <div>
+          <div class="flex space-x-4 text-black">
+            <div>
+              <a><div class="italic text-xl text-black font-bold py-2 px-4 rounded mt-4">
+                  {{roledesc}}</div></a>
+              </div>
+            <div id="Add_Mentor"><button type="button"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+                (click)="goToPage('list')">Active Interns</button></div>
+            <div id="Add_Mentor"><button type="button"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+                (click)="goToPage('mentorlist')">Mentor List</button></div>
+            <div id="Add_Mentor"><button type="button"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+                (click)="logout()">Logout</button></div>
+            </div>
+        </div>
+      </div>
+    </header>
+  </nav>
+
+  <nav aria-label="breadcrumb" class="mt-5">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a (click)="navigateTo()"><mat-icon>home</mat-icon></a></li>
+      <li class="breadcrumb-item active" aria-current="page">List of Past Interns</li>
+    </ol>
+  </nav>
+
+  <div class="container mx-auto mt-8 px-4">
+    <div id="table-div" class="bg-white rounded-xl shadow-lg overflow-x-auto">
+      <table class="min-w-full text-center table-auto">
+        <thead>
+          <tr class="bg-slate-700 text-center text-lg">
+            <th scope="col" class="py-3 px-4 text-white">Intern ID</th>
+            <th scope="col" class="py-3 px-4 text-white">Full Name</th>
+            <th scope="col" class="py-3 px-4 text-white">Mentor</th>
+            <th scope="col" class="py-3 px-4 text-white">Graduation</th>
+            <th scope="col" class="py-3 px-4 text-white">Skillset</th>
+            <th scope="col" class="py-3 px-4 text-white">End Date</th>
+            <th scope="col" class="py-3 px-4 text-white">Association</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let interns of inactiveInternDetails" id="inactivelist-hover" class="text-center items-center justify-center bg-slate-300 font-bold" >
+            <td class="py-3 px-4" (click)="openInactiveProfile(interns)">{{interns.id}}</td>
+            <td class="py-3 px-4" (click)="openInactiveProfile(interns)">{{interns.fullname}}</td>
+            <td class="py-3 px-4" (click)="openInactiveProfile(interns)">{{interns.mentor}}</td>
+            <td class="py-3 px-4" (click)="openInactiveProfile(interns)">{{interns.coursename}}</td>
+            <td class="py-3 px-4" (click)="openInactiveProfile(interns)">{{interns.role}}</td>
+            <td class="py-3 px-4" (click)="openInactiveProfile(interns)">{{interns.endDate}}</td>
+            <td class="py-3 px-4" (click)="openInactiveProfile(interns)">{{interns.association}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <span class="m-4"></span>
+    </div>
+    </body>

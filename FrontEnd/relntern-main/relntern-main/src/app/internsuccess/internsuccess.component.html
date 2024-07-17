@@ -1,0 +1,68 @@
+<style>
+    .slide:hover,
+    .slide:focus {
+        box-shadow: inset 6.5em 0 0 0 var(--hover);
+
+        .avatar {
+            vertical-align: middle;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        button:hover {
+            background-color: #4CAF50;
+            color: white;
+            transition: ease 0.5s;
+        }
+    }
+</style>
+
+
+<body class="bg-white-100">
+    <nav>
+        <header class="bg-white py-4">
+            <div class="container mx-auto flex justify-between items-center px-4">
+                <h1 class="text-black text-xl font-bold flex items-center">
+                    <img class="mx-auto h-10 w-auto"
+                        src="https://1000logos.net/wp-content/uploads/2021/08/Reliance-Industries-Limited-RIL-Logo-500x314.jpg"
+                        alt="Your Company" (click)="goToPage('dashboard')">
+                    <!-- <span class="ml-2" id="relntern-nav">
+              <div class="nav-title">Welcome, Admin</div>
+            </span> -->
+                </h1>
+                <nav>
+                    <ul class="flex space-x-4 text-black">
+                        <a><h2 class=" text-black font-bold py-2 px-4 rounded mt-4">
+                            {{roledesc}}</h2 ></a>
+                        <li id="Add_Mentor"><button type="button"
+                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+                                (click)="goToPage('addmentor')">Add Mentor</button></li>
+                        <li id="Add_Mentor"><button type="button"
+                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+                                (click)="logout()">Logout</button></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+    </nav>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a (click)="navigateTo()">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Intern Added</li>
+        </ol>
+    </nav>
+
+    <div class="jumbotron">
+        <h1 class="display-4">Added Sucessfully</h1>
+        <p class="lead">The intern has been added to the active list of interns.</p>
+        <hr class="my-4">
+        <p>To view the record on the table, click on the button below</p>
+        <p class="lead">
+            <!-- <a class="btn btn-primary btn-lg" role="button" (click)="goToPage('list')">List of Interns</a> -->
+            <button class="btn btn-primary btn-lg" (click)="goToPage('list')">List of Interns</button>
+        </p>
+    </div>
+<!--
+    <button class="btn btn-primary btn-lg" (click)="openDialog()">List of Interns</button> -->

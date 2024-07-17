@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relntern Manager</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+  <style>
+    /* .avatar {
+      vertical-align: middle;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    } */
+
+    button:hover {
+      /* background-color: #4CAF50;
+      color: white; */
+      transition: ease 0.5s;
+    }
+
+    /* @keyframes typing {
+      from {
+        width: 0;
+      }
+    } */
+
+    /* @keyframes blink {
+      50% {
+        border-color: transparent;
+      }
+    } */
+
+    /* #dashboard-menu:hover {
+      transform: translate(-1.5%, -1.5%);
+      transition: transform 0.45s;
+    } */
+
+    /* #table-div {
+      margin-bottom: 10px;
+    } */
+  </style>
+
+</head>
+
+<body class="md:px-6 h-auto bg-[#f8fafd]">
+  <nav>
+    <header class="bg-neutral-500 py-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <div class="text-black text-xl font-bold flex items-center">
+          <img class="mx-auto md:h-16 h-12 w-auto"
+            src="https://1000logos.net/wp-content/uploads/2021/08/Reliance-Industries-Limited-RIL-Logo-500x314.jpg"
+            alt="Your Company" (click)="goToPage('dashboard')">
+
+        </div>
+        <nav>
+          <ul class="flex space-x-4 text-black">
+            <li>
+              <a><h2 class=" text-black font-bold py-1 px-4 rounded mt-4 italic">
+                {{roledesc}}</h2 ></a>
+            </li>
+            <li id="Add_Mentor"><button type="button"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+                (click)="goToPage('inactive')" *ngIf="isMentor || isAdmin">Past Interns</button></li>
+            <!-- <li id="Add_Mentor"><button type="button"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+                (click)="goToPage('addmentor')" *ngIf="isAdmin">Add Mentor</button></li>
+            <li id="Add_Mentor"><button type="button"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+                (click)="goToPage('mentorlist')">Mentor List</button></li>
+            <li id="Add_Mentor"><button type="button"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+                (click)="logout()">Logout</button></li> -->
+
+          </ul>
+        </nav>
+      </div>
+    </header>
+  </nav>
+
+  <nav aria-label="breadcrumb" class="mt-4">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item  active" ><a (click)="navigateTo()"><mat-icon>home</mat-icon></a></li>
+      <li class="breadcrumb-item" aria-current="page">List of Interns</li>
+    </ol>
+  </nav>
+
+  <div class="container mx-auto mt-4 px-4">
+    <div id="table-div" class="bg-white rounded-xl shadow-lg overflow-x-auto">
+      <table class="min-w-full  text-center">
+        <thead>
+          <tr class="bg-slate-700 text-center text-lg">
+            <th scope="col" class="py-4 px-4 text-white">Intern ID</th>
+            <th scope="col" class="py-4 px-4 text-white">Full Name</th>
+            <th scope="col" class="py-4 px-4 text-white">Mentor</th>
+            <th scope="col" class="py-4 px-4 text-white">End Date</th>
+            <th scope="col" class="py-4 px-4 text-white">Association</th>
+            <th scope="col" class="py-4 px-4 text-white">View Task</th>
+            <th scope="col" class="py-4 px-4 text-white"*ngIf="isMentor || isAdmin">Profile</th>
+            <!-- <th scrope="col" class="py-2 px-4" *ngIf="isMentor || isAdmin">Inactive</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let interns of internDetails" id="list-hover" class="text-center items-center justify-center bg-slate-300 font-bold">
+              <td class="py-3 px-4" (click)="openProfile(interns)">{{interns.id}}</td>
+              <td id="hover-change" class="py-3 px-4 hover:font-bold cursor-pointer"(click)="openProfile(interns)">{{interns.fullname}}</td>
+              <td class="py-3 px-4" (click)="openProfile(interns)">{{interns.mentor}}</td>
+              <td class="py-3 px-4" (click)="openProfile(interns)">{{interns.endDate}}</td>
+              <td class="py-3 px-4" (click)="openProfile(interns)">{{interns.association}}</td>
+              <td class="py-2 px-4"><button class="font-bold rounded-lg text-lg px-4 py-1 text-center mr-2 text-white bg-gradient-to-r from-blue-500 via-blue-700 to-blue-900 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-blue-800/80" (click)="gotopage(interns.id)">View Task</button></td>
+              <td class="py-2 px-4" *ngIf="isMentor || isAdmin"><button class="font-bold rounded-lg text-lg px-4 py-1 text-center mr-2 text-white bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:focus:ring-yellow-800 shadow-lg shadow-yellow-500/50 dark:shadow-lg dark:shadow-yellow-800/80" (click)="openEdit(interns)" >Update </button></td>
+              <!-- <td class="py-2 px-4" *ngIf="isMentor || isAdmin"><button class="btn btn-primary" (click)="openDialog(interns.id)">Inactive</button></td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <span class="m-4"></span>
+    </div>
+    </body>

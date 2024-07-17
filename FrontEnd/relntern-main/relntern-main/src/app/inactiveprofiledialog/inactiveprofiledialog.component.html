@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intern Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Add any additional custom styles here */
+        .row {
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 3px;
+        }
+
+        .avatar {
+            width: 100px;
+            border-radius: 50%;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-gap: 1rem;
+        }
+
+        .grid-item {
+            padding: 1rem;
+            background-color: #F3F4F6;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .grid-item h3,
+        .grid-item h4 {
+            margin: 0;
+        }
+
+        #fullname,
+        #email {
+            padding-right: 40px;
+            padding-left: 40px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        /* Additional style for progress bar */
+        .progress {
+            height: 0.5rem;
+            border-radius: 0.25rem;
+            background-color: #E2E8F0;
+            overflow: hidden;
+        }
+
+        .progress .progress-accent {
+            height: 100%;
+            border-radius: 0.25rem;
+        }
+
+        #status-bar {
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            color: #ff4411;
+            font-size: 20px;
+            font-family: 'Signika', sans-serif;
+            padding-bottom: 10px;
+        }
+
+        /* Navbar styles */
+        .navbar {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-logo {
+            height: 20px;
+        }
+
+        .navbar-button {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            background-color: #4A5568;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .navbar-button:hover {
+            background-color: #374151;
+        }
+
+        /* Main content styles */
+        body {
+            background-color: #F9FAFB;
+        }
+
+        .container {
+            padding: 2rem;
+        }
+
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .profile-role {
+            font-size: 16px;
+            color: #666;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .info-item {
+            margin-bottom: 1rem;
+        }
+
+        .info-item strong {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .progress-bar-container {
+            background-color: #E2E8F0;
+            height: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 5px;
+            background-color: #3B82F6;
+        }
+
+        .mentor-details {
+            margin-top: 1rem;
+        }
+
+        .mentor-details p {
+            margin-bottom: 0.5rem;
+        }
+
+        #close-button{
+            padding-left: auto;
+            align-items: right !important;
+        }
+    </style>
+</head>
+<body>
+    <button class="btn btn-circle" id="close-button" (click)="closeDialog()">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+    </button>
+
+    <div class="container mx-auto mt-2">
+        <div class="grid-container">
+            <div class="grid-item">
+                <h3 class="profile-name">{{ internProfile.fullname }}</h3>
+                <p class="profile-role">{{internProfile.role}}</p>
+            </div>
+
+            <div class="grid-item">
+                <h3 class="section-title">Contact Information</h3>
+                <div class="info-item"><strong>Email: </strong>{{ internProfile.email }}</div>
+                <div class="info-item"><strong>Reference Name: </strong> {{internProfile.reference}}</div>
+            </div>
+
+            <div class="grid-item">
+                <h3 class="section-title">Project Details</h3>
+                <div class="info-item"><strong>Project Name: </strong>{{ internProfile.projectname }}</div>
+                <div class="info-item"><strong>Project Status: </strong></div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar"></div>
+                </div>
+                <div class="info-item"><strong>Start Date: </strong> {{internProfile.startDate}}</div>
+                <div class="info-item"><strong>End Date: </strong> {{internProfile.endDate}}</div>
+            </div>
+
+            <div class="grid-item">
+                <h3 class="section-title">Educational Details</h3>
+                <div class="info-item"><strong>University: </strong> {{internProfile.uniname}}</div>
+                <div class="info-item"><strong>Course Name: </strong> {{internProfile.coursename}}</div>
+                <div class="info-item"><strong>Specialization: </strong> {{internProfile.specialization}}</div>
+                <div class="info-item"><strong>Graduation Year: </strong> {{internProfile.gradyear}}</div>
+            </div>
+
+            <div class="grid-item">
+                <h3 class="section-title">Mentor Details</h3>
+                <div class="mentor-details"><strong>Mentor Name: </strong> {{ internProfile.mentor }}</div>
+                <div class="mentor-details"><strong>Mentor Email: </strong>{{ internProfile.mentoremail }}</div>
+                <div class="mentor-details"><strong>Association: </strong>{{ internProfile.association }}</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

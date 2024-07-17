@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relntern Manager</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+  <style>
+    .avatar {
+      vertical-align: middle;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+
+    button:hover {
+      background-color: #4CAF50;
+      color: white;
+      transition: ease 0.5s;
+    }
+
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+    }
+
+    @keyframes blink {
+      50% {
+        border-color: transparent;
+      }
+    }
+
+    #dashboard-menu:hover {
+      transform: translate(-1.5%, -1.5%);
+      transition: transform 0.45s;
+    }
+
+    #table-div{
+      margin-bottom: 10px;
+    }
+  </style>
+
+</head>
+
+<body class="bg-white-100">
+  <nav>
+    <header class="bg-white py-4">
+      <div class="container mx-auto flex justify-between items-center px-4">
+        <h1 class="text-black text-xl font-bold flex items-center">
+          <img class="mx-auto h-10 w-auto"
+            src="https://1000logos.net/wp-content/uploads/2021/08/Reliance-Industries-Limited-RIL-Logo-500x314.jpg"
+            alt="Your Company" (click)="navigateTo()">
+
+        </h1>
+        <nav>
+          <ul class="flex space-x-4 text-black">
+            <li>
+              <a><h2 class=" text-black font-bold py-2 px-4 rounded mt-4">{{roledesc}}</h2></a>
+            </li>
+            <li id="Add_Mentor"><button type="button"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+                (click)="goToPage('inactive')">Past Interns</button></li>
+            <li id="Add_Mentor"><button type="button"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+                (click)="goToPage('mentorlist')">Mentor List</button></li>
+            <li id="Add_Mentor"><button type="button"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+                (click)="logout()">Logout</button></li>
+
+          </ul>
+        </nav>
+      </div>
+    </header>
+  </nav>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a (click)="navigateTo()">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Add Mentor</li>
+    </ol>
+  </nav>
+
+  <main class="container mx-auto mt-8 px-4">
+    <div class="bg-white rounded-lg shadow-lg p-8">
+      <h2 class="text-2xl font-bold mb-4">Add Mentor</h2>
+      <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-gray-700 font mb-2" for="mentorname">Mentor Name</label>
+            <input type="text" id="mentorname" name="mentorname"
+              class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter Mentor name" #mentorname (ngModel)="mentorname" required>
+          </div>
+          <div>
+            <label class="block text-gray-700 font mb-2" for="mentoremail">Mentor Email</label>
+            <input type="email" id="mentoremail" name="mentoremail"
+              class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter mentor email" #mentoremail (ngModel)="mentoremail" required>
+          </div>
+
+          <div>
+            <label class="block text-gray-700 font mb-2" for="project">L1 Name</label>
+            <input type="text" id="l1name" name="l1name"
+              class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter L1 name" #l1name (ngModel)="l1name" required>
+          </div>
+          <div>
+            <label class="block text-gray-700 font mb-2" for="project">L1 Email</label>
+            <input type="text" id="l1email" name="l1email"
+              class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter L1 Email" #l1email (ngModel)="l1email" required>
+          </div>
+
+          <div  class="col-span-2">
+            <label class="block text-gray-700 font mb-2" for="jobRole">Role</label>
+            <input type="text" id="Role" name="Role"
+              class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+              #Role (ngModel)="Role" placeholder="Ex. Full-Stack Developer" required>
+          </div>
+          <div class="col-span-2">
+            <label class="block text-gray-700 font mb-2" for="association">Association</label>
+            <select id="association" name="association"
+              class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+              #association (ngModel)="association" required>
+              <option value="" disabled selected>Select association</option>
+              <option value="PetChem IT">PetChem IT</option>
+              <option value="Finance">Finance</option>
+              <option value="Marketing">Marketing</option>
+              <option value="HR">HR</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mt-6">
+          <ul class="flex space-x-4 text-black">
+            <li> <button type="submit"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                Save
+              </button> </li>
+            <li> <button type="cancel" (click)="navigateTo()"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" style=" background-color: #7c0d0d;">
+                Cancel
+              </button> </li>
+          </ul>
+        </div>
+
+      </form>
+    </div>
+  </main>
+
+</body>

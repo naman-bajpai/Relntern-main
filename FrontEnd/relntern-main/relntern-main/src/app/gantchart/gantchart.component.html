@@ -1,0 +1,94 @@
+<!-- ganttcomponent.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relntern Manager</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+  <style>
+    .avatar {
+      vertical-align: middle;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+
+    button:hover {
+      background-color: #4CAF50;
+      color: white;
+      transition: ease 0.5s;
+    }
+
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+    }
+
+    @keyframes blink {
+      50% {
+        border-color: transparent;
+      }
+    }
+
+    #dashboard-menu:hover {
+      transform: translate(-1.5%, -1.5%);
+      transition: transform 0.45s;
+    }
+
+    #table-div {
+      margin-bottom: 10px;
+    }
+  </style>
+
+</head>
+
+<!-- <body class="bg-white-100"> -->
+  <!-- <nav>
+    <header class="bg-white py-4">
+      <div class="container mx-auto flex justify-between items-center px-4">
+        <h1 class="text-black text-xl font-bold flex items-center">
+          <img class="mx-auto h-10 w-auto"
+            src="https://1000logos.net/wp-content/uploads/2021/08/Reliance-Industries-Limited-RIL-Logo-500x314.jpg"
+            alt="Your Company" (click)="goToPage('dashboard')">
+
+        </h1>
+        <nav>
+          <ul class="flex space-x-4 text-black">
+            <li>
+              <a><h2 class=" text-black font-bold py-2 px-4 rounded mt-4">
+                  {{roledesc}}</h2 ></a>
+          </li>
+            <li id="Add_Mentor"><button type="button"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+                (click)="goToPage('inactive')">Past Interns</button></li>
+            <li id="Add_Mentor"><button type="button"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+                (click)="goToPage('list')">Active Interns</button></li>
+            <li id="Add_Mentor"><button type="button"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+                (click)="logout()">Logout</button></li>
+
+          </ul>
+        </nav>
+      </div>
+    </header>
+  </nav> -->
+
+  <!-- <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a (click)="navigateTo()">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Gantt Chart</li>
+    </ol>
+  </nav> -->
+
+  <div id="loader" class="w-full pb-5 shadow-md rounded-lg">
+    <ejs-gantt #ganttObject  [dataSource]="data" allowSelection="false" allowSorting="true"
+      [treeColumnIndex]="1" [allowFiltering]="true" [allowResizing]="true" [allowReordering]="true"
+      [taskFields]="taskFields" [labelSettings]="labelSettings" [columns]="columns"
+      [timelineSettings]="timelineSettings">
+    </ejs-gantt>
+
+  </div>

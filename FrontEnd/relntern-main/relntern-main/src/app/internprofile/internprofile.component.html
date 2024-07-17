@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intern Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Add any additional custom styles here */
+        .row {
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 3px;
+        }
+
+        .avatar {
+            width: 100px;
+            border-radius: 50%;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-gap: 1rem;
+        }
+
+        .grid-item {
+            padding: 1rem;
+            background-color: #F3F4F6;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .grid-item h3,
+        .grid-item h4 {
+            margin: 0;
+        }
+
+        #fullname,
+        #email {
+            padding-right: 40px;
+            padding-left: 40px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        /* Additional style for progress bar */
+        .progress {
+            height: 0.5rem;
+            border-radius: 0.25rem;
+            background-color: #E2E8F0;
+            overflow: hidden;
+        }
+
+        .progress .progress-accent {
+            height: 100%;
+            border-radius: 0.25rem;
+        }
+
+        #status-bar {
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            color: #ff4411;
+            font-size: 20px;
+            font-family: 'Signika', sans-serif;
+            padding-bottom: 10px;
+        }
+
+        /* Navbar styles */
+        .navbar {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-logo {
+            height: 20px;
+        }
+
+        .navbar-button {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            background-color: #4A5568;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .navbar-button:hover {
+            background-color: #374151;
+        }
+
+        /* Main content styles */
+        body {
+            background-color: #F9FAFB;
+        }
+
+        .container {
+            padding: 2rem;
+        }
+
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .profile-role {
+            font-size: 16px;
+            color: #666;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .info-item {
+            margin-bottom: 1rem;
+        }
+
+        .info-item strong {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .progress-bar-container {
+            background-color: #E2E8F0;
+            height: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 5px;
+            background-color: #3B82F6;
+        }
+
+        .mentor-details {
+            margin-top: 1rem;
+        }
+
+        .mentor-details p {
+            margin-bottom: 0.5rem;
+        }
+
+        #close-button{
+            padding-left: auto;
+            align-items: right !important;
+        }
+    </style>
+</head>
+<body class="">
+    <!-- <button class="" id="close-button" (click)="closeDialog()">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+    </button> -->
+    <div class="flex justify-end">
+        <button  (click)="closeDialog()"
+                class="font-bold rounded-lg text-lg px-4 py-1.5 text-center mt-2 mr-2 text-white bg-gradient-to-r from-red-500 via-red-700 to-red-900 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-blue-800/80">
+                X
+        </button>
+    </div>
+    <div class="container mx-auto mt-2">
+        <div class="grid-container">
+            <div class="grid-item border-4">
+                <h3 class="profile-name">{{ internProfile.fullname }}</h3>
+                <p class="profile-role">{{internProfile.role}}</p>
+            </div>
+
+            <div class="grid-item">
+                <h3 class="section-title"><u>Personal Information</u></h3>
+                <div class="info-item"><strong>DOB: </strong>{{ internProfile.dob }}</div>
+                <div class="info-item"><strong>Email: </strong>{{ internProfile.email }}</div>
+                <div class="info-item"><strong>Phone: </strong>{{ internProfile.phone }}</div>
+                <div class="info-item"><strong>Location: </strong>{{ internProfile.location }}</div>
+                <!-- <div class="info-item"><strong>Reference Name: </strong> {{internProfile.reference}}</div> -->
+                <div class="info-item"><strong>Linkedin URL: </strong> {{internProfile.linkedlink}}</div>
+                <div class="info-item"><strong>Quarter: </strong> {{internProfile.quarter}}</div>
+            </div>
+
+            <div class="grid-item">
+                <h3 class="section-title"><u>Project Details</u></h3>
+                <div class="info-item"><strong>Project Name: </strong>{{ internProfile.projectname }}</div>
+                <!-- <div class="info-item"><strong>Project Status: </strong>{{internProfile.projectstatus}}</div> -->
+                <!-- <div class="progress-bar-container">
+                    <div class="progress-bar"></div>
+                </div> -->
+                <div class="info-item"><strong>Start Date: </strong> {{ internProfile.startDate}}</div>
+                <div class="info-item"><strong>End Date: </strong> {{ internProfile.endDate}}</div>
+            </div>
+
+            <div class="grid-item">
+                <h3 class="section-title"><u>Educational Details</u></h3>
+                <div class="info-item"><strong>University: </strong> {{ internProfile.uniname}}</div>
+                <div class="info-item"><strong>Course Name: </strong> {{ internProfile.coursename}}</div>
+                <div class="info-item"><strong>Specialization: </strong> {{ internProfile.specialization}}</div>
+                <div class="info-item"><strong>Graduation Year: </strong> {{ internProfile.gradyear}}</div>
+                <div class="info-item"><strong>Semester Joined: </strong> {{ internProfile.semester}}</div>
+            </div>
+
+            <div class="grid-item">
+                <h3 class="section-title"><u>Mentor Details</u></h3>
+                <div class="info-item"><strong>Mentor Name: </strong> {{ internProfile.mentor }}</div>
+                <div class="mentor-details"><strong>Mentor Email: </strong>{{ internProfile.mentoremail }}</div>
+                <div class="mentor-details"><strong>Association: </strong>{{ internProfile.association }}</div>
+            </div>
+            <form [formGroup]="uploadDocument" (ngSubmit)="upload()">
+            <div *ngIf="isintern" class=" mt-2 grid-item border outline-dashed outline-2 outline-offset-1">
+                <h3 class="section-title"><u>Upload Document</u></h3>
+                <div class="flex w-full">
+                <div class="flex  mr-auto">
+                <div class="flex items-center justify-center">
+                    <input
+                        formControlName="inputfile"
+                        type="file"
+                        class="
+                            block text-sm w-[240px] text-slate-500
+                            file:mr-2 file:py-2 file:px-2
+                            file:rounded-full file:border-0
+                            file:text-sm file:font-bold
+                            file:bg-violet-200 file:text-violet-700
+                            hover:file:bg-violet-500 hover:file:text-white
+                            py-2"
+                    />
+                </div>
+                <div class="form-text text-danger -ml-3" *ngIf="inputfile.errors?.['required'] && (inputfile.touched)">
+                    *
+                </div>
+                </div>
+                <div class="flex justify-end px-3 py-2">
+                    <button class="flex justify-end bg-[#5C59E8] hover:bg-blue-700 font-semibold rounded-lg px-4 py-1 text-white">
+                      Submit
+                    </button>
+                </div>
+                </div>
+            </div>
+            </form>
+            <div *ngIf="isMentor && uploadedFiles.length > 0" class=" mt-2 grid-item border outline-dashed outline-2 outline-offset-1">
+                <h3 class="section-title"><u>Uploaded Document</u></h3>
+                <table class="w-full border-2 ">
+                    <thead class="w-1/2 border">
+                        <th class="text-center font-bold py-2">Document</th>
+                        <th class="text-center font-bold py-2">Submitted On</th>
+                    </thead>
+                    <tbody class="w-1/2">
+                    <tr *ngFor="let files of uploadedFiles" class="">
+                        <td class="w-1/2 text-center py-2"><a><u>{{files.docname}}</u></a></td>
+                        <td class="w-1/2 text-center py-2">{{files.date}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="mt-3 items-center border-2 p-2">
+                    <div class="text-xl font-bold "><u>Close Internship and trigger mails <mat-icon>question_mark</mat-icon></u></div>
+                    <button (click)="closeInternship(this.internProfile.id)" class=" items-center mt-3 font-bold rounded-lg text-lg px-4 py-1 text-center text-white bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:focus:ring-yellow-800 shadow-lg shadow-yellow-500/50 dark:shadow-lg dark:shadow-yellow-800/80">Close Internship</button>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
