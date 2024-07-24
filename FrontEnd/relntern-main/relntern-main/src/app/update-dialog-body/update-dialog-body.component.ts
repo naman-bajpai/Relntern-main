@@ -27,15 +27,11 @@ export class UpdateDialogBodyComponent {
   }
 
   updateIntern(): void {
-    // console.log(this.internUpdate);
-    // console.log(this.internUpdate.id);
-    
     this.internService.updateIntern(this.data.intern).subscribe(
       (resp) => {
         console.log(resp);
         this.successToastr();
         this.closeDialog();
-        // this.router.navigate(['/'], {skipLocationChange: true}).then(() => this.router.navigate(['/list']));
       },
       (err) => { console.log(err); }
     );

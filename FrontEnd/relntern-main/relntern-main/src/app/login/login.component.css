@@ -80,6 +80,9 @@ input[type="color"]:focus,
     color: inherit;
 }
 
+#email:hover{
+    border: #3b82f6 1px solid;
+}
 
 @media only screen and (max-width: 1130px) {
     .circle{

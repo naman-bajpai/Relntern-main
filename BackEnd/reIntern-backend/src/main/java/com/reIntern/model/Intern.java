@@ -1,8 +1,8 @@
 package com.reIntern.model;
 
 import java.sql.Date;
+
 import java.util.List;
-import java.util.Set;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -11,7 +11,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -43,11 +42,11 @@ public class Intern {
     private String location;
     private Date dob;
     private String semester;
+    private String password;
     private int userId;
     
     private String remarks;
     private String domainid;
-    
     private boolean isActive;
     
     public boolean getIsActive() {
@@ -105,6 +104,15 @@ public class Intern {
 	public void setSemester(String semester) {
 		this.semester = semester;
 	}
+	
+	public String getPassword() {
+		return password;
+	}
+	
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
 	@OneToMany(targetEntity = Task.class ,cascade = CascadeType.ALL)
     @JoinColumn(name = "Intern_id", referencedColumnName = "id")
     private List<Task> task;

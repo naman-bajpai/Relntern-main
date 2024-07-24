@@ -57,24 +57,14 @@ public class InternController {
 
     @PostMapping("/{id}/moveToInactive")
     public ResponseEntity<String> moveActiveToIntactive(@PathVariable int id) {
-//        try {
             internService.moveActiveToIntactive(id);
             return ResponseEntity.ok("Intern moved to inactive successfully.");
-//        } catch (Exception e) {
-//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-//                    .body("Error moving intern to inactive interns: " + e.getMessage());
-//        }
     }
     
     @PostMapping("/{id}/closeInternship")
     public ResponseEntity<String> closeInternship(@PathVariable int id) {
-//        try {
             internService.closeInternship(id);
             return ResponseEntity.ok("Intern moved to inactive, mails triggerd.");
-//        } catch (Exception e) {
-//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-//                    .body("Error moving intern to inactive interns: " + e.getMessage());
-//        }
     }
 
     @GetMapping("/viewtask/{id}")
@@ -89,14 +79,12 @@ public class InternController {
         return internService.getInternByUserId(userId) ;
     }
     
-//    All interns under this mentor active and inactive
     @GetMapping("/getByMentor/{mentoremail}")
     public List<Intern> getByMentor(@PathVariable String mentoremail) {
     	System.out.println(mentoremail);
     	return  internService.getByMentor(mentoremail);
     }
     
-//    Interns those are active under this mentor
     @GetMapping("/getActiveByMentor/{mentoremail}")
     public List<Intern> getActiveByMentor(@PathVariable String mentoremail) {
     	System.out.println(mentoremail);

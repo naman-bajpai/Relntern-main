@@ -7,7 +7,6 @@ import jakarta.persistence.Id;
 
 @Entity
 public class user {
-
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 private int id;

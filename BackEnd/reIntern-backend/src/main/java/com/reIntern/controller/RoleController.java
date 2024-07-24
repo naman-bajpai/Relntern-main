@@ -47,9 +47,6 @@ public class RoleController {
 
         Role flag = roleservice.loginValidation(username, password);
 
-//		if(flag == 0) {
-//			return 0;
-//		}
         return flag;
 
     }
@@ -59,13 +56,7 @@ public class RoleController {
     	JSONObject result= new JSONObject();
         String email = (String) user.get("email");
         String password = (String) user.get("password");
-    
-//    @PostMapping("/signupIntern")
-//    public String InternRegisterValue(@RequestBody user  user) {
-//        String email = user.get("email");
-//        String password = user.get("password");
-      
-//       Intern record = internrepository.findByEmail(email);
+  
         
         if(userrepo.findByUsername(email)!=null) {
         	result.put("result",  "User already exists");
@@ -84,17 +75,14 @@ public class RoleController {
 	        	interndetails.setUserId(newuser.getId());
 	        	internrepository.save(interndetails);
 	        	
-	        	result.put("result",  "User  saved Successfully");
-//	        	return "User  saved Successfully" ;
+	        	result.put("result",  "User  saved Successfully");	
 	        }
 	        else {
 	        	result.put("result",  "Some error occured");
-//	        	return "Some error occured" ;
+	        	return null;
 	        }
         	
         }
-        
-    	//System.out.println(record);
         return result;
 
     }

@@ -27,7 +27,11 @@ export class AddComponent implements OnInit {
   selectedMentor!: String;
   // mentors: any[] = [];
   //quarterarray:string[]=[];
+   
   toppingList: string[] = ['Q1', 'Q2', 'Q3', 'Q4'];
+  show: boolean = false;
+
+
 
   ngOnInit(): void {
     this.getInterns();
@@ -39,6 +43,7 @@ export class AddComponent implements OnInit {
     });
   }
 
+  
   selectmentor(mentor: any) {
     // console.log(mentor.target.value);
     const selectedMentorName = this.registerForm.get('mentor')?.value;
@@ -65,9 +70,13 @@ export class AddComponent implements OnInit {
     this.registerForm.reset();
   }
 
+  togglePasswordVisibility(): void {
+    this.show = !this.show;
+  }
   registerForm = this.formBuilder.group({
     fullname: new FormControl("", [Validators.required, Validators.minLength(2), Validators.pattern("[a-zA-Z].*")]),
     email: new FormControl("", [Validators.required, Validators.email]),
+    password: new FormControl("",Validators.required),
     role: new FormControl('', [Validators.required]),
     association: new FormControl('', Validators.required),
     phone: new FormControl("", [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern("[0-9]*")]),
@@ -242,6 +251,9 @@ export class AddComponent implements OnInit {
   get email(): FormControl {
     return this.registerForm.get("email") as FormControl;
   }
+  get password(): FormControl {
+    return this.registerForm.get("password") as FormControl;
+  }
   get role(): FormControl {
     return this.registerForm.get("role") as FormControl;
   }
@@ -392,4 +404,6 @@ export class AddComponent implements OnInit {
   goToPage(pageName: string): void {
     this.router.navigate([`${pageName}`]);
   }
+
+  
 }

@@ -20,12 +20,6 @@ export class MentordashboardComponent {
 
 
   ngOnInit(): void{
-    // this.reloadPage(); 
-    // for(let i=0;i<1;i++){
-      // this.reloadPage();   
-      // break;
-    // }
-    // location.reload();
     console.log(this.router.url);
     const retrievedInteger:string|null = localStorage.getItem('userId');
     if (retrievedInteger !== null) {
@@ -35,7 +29,6 @@ export class MentordashboardComponent {
    } else {
      console.error('Does not exist in localStorage.');
    }
-  //  this.InternsByMentor();
   }
   reloadPage() {
     window.location.reload()
@@ -56,8 +49,6 @@ export class MentordashboardComponent {
     this.internservice.getActiveByMentor(this.mentoremail11).subscribe((data) => {
       console.log(data);
       this.internDetails=data;
-      // this.internName = data.fullname;
-      
     })
   }
   openEdit(intern: any): void {
@@ -81,7 +72,6 @@ export class MentordashboardComponent {
   gotopage( internsId : any): void {
     console.log(internsId);
     this.router.navigate(['view-task/',internsId]);
-    //this.sendData(interns);
   }
 
 }
