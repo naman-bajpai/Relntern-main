@@ -27,12 +27,6 @@ export class InternService {
     })
   };
 
-  // public sendRegisterMail(mail:any,structure:any){
-  //   console.log(structure);
-    
-  //   return this.http.post(this.API+'/mail/send/'+mail,structure,this.httpOptions);
-  // }
-
   public getInterns() {
     return this.http.get(this.API + '/getInterns');
   }
@@ -118,8 +112,6 @@ export class InternService {
   }
 
   public registerTask(taskdetails: any,internId:any) {
-    // console.log(mentor_id);
-    // const params = new HttpParams().set('mentor_id', mentor_id)
     return this.http.post(this.API + '/registerTask/' + internId, taskdetails);
   }
 

@@ -2,53 +2,11 @@
     box-shadow:10px 15px 8px 5px #828282     
 }
 
-/* #box{
-    border-radius: 50px;
-    background: #e0e0e0;
-    box-shadow:  20px 20px 60px #bebebe,
-                 -20px -20px 60px #ffffff;
-} */
 
-/* .button {
-    width: fit-content;
-    display: flex;
-    padding: 0.8em 1.1em;
-    gap: 0.4rem;
-    border: none;
-    font-weight: bold;
-    border-radius: 30px;
-    cursor: pointer;
-    text-shadow: 2px 2px 3px rgb(136 0 136 / 50%);
-    background: linear-gradient(
-        15deg,
-        #ffdd04,
-        #d8db1e,
-        #cc3f47,
-        #de6f3d,
-        #f09f33,
-        #de6f3d,
-        #cc3f47,
-        #f07a05,
-        #f6fd1e
-      )
-      no-repeat;
-    background-size: 300%;
-    background-position: left center;
-    transition: background 0.3s ease;
-    color: #fff;
-  }
-  
-  .button:hover {
-    background-size: 320%;
-    background-position: right center;
-  }
-  
-  .button:hover svg {
-    fill: #fff;
-  }
-  
-  .button svg {
-    width: 23px;
-    fill: #f09f33;
-    transition: 0.3s ease;
-  } */
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 70
+}
