@@ -24,7 +24,4 @@ export class AuthService {
     return this.http.post(this.base_url+"/signupIntern" , registerData);
    }
    
-  //  postUserData():Observable<User[]> {s
-  //   return this.http.post<User[]>(`${this.base_url}`);
-  //  }
 }

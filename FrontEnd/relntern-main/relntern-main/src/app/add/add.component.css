@@ -1,33 +1,57 @@
 .multiselect {
-    width: 200px;
-  }
-  
-  .selectBox {
-    position: relative;
-  }
-  
-  .selectBox select {
-    width: 100%;
-    font-weight: bold;
-  }
-  
-  .overSelect {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-  }
-  
-  #checkboxes {
-    display: none;
-    border: 1px #dadada solid;
-  }
-  
-  #checkboxes label {
-    display: block;
-  }
-  
-  #checkboxes label:hover {
-    background-color: #1e90ff;
-  }
+  width: 200px;
+}
+
+.selectBox {
+  position: relative;
+}
+
+.selectBox select {
+  width: 100%;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  cursor: pointer;
+}
+
+#checkboxes {
+  display: none;
+  border: 1px #dadada solid;
+  background-color: white;
+  position: absolute;
+  width: 100%;
+  max-height: 200px; /* optional: limit the height */
+  overflow-y: auto;  /* optional: add scroll */
+  z-index: 1;
+}
+
+#checkboxes label {
+  display: block;
+  padding: 8px;
+  cursor: pointer;
+}
+
+#checkboxes label:hover {
+  background-color: #1e90ff;
+  color: white;
+}
+
+.field-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #888; /* Customize the color as needed */
+}
+
+.field-icon:hover {
+  color: #000; /* Change color on hover */
+}

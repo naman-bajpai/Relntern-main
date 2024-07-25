@@ -1,90 +1,37 @@
-/* .card {
-    width: 30vw;
-    height: 12em;
-    background: #cc8888;
-    transition: 1s ease-in-out;
-    clip-path: polygon(30px 0%, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0% 30px);
-    border-top-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    }
-  .card:hover {
-    border: 1px solid black;
-    transform: scale(1.01);    
+.avatar {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
   }
   
-  .card span {
-    font-weight: bold;
-    color: white;
-    text-align: center;
-    display: block;
-    font-size: 1em;
-  }
-  
-  
-  .card a {
-    color: white;
-    transition: .4s ease-in-out;
-  }
-  
-  .card a:hover {
-    color: red;
-  }
-  
-  .card button {
-    padding: 2em 6em;
-    display: block;
-    margin: auto;
-    border-radius: 25px;
-    border: none;
-    font-weight: bold;
-    background: #ffffff;
-    color: rgb(0, 0, 0);
-    transition: .4s ease-in-out;
-  }
-  
-  .card button:hover {
-    background: rgb(132, 128, 128);
-    color: white;
-    cursor: pointer;
-  } */
 
-/* .card {
-    box-sizing: border-box;
-    width: 30vw;
-    height: 254px;
-    background: rgba(217, 217, 217, 0.58);
-    border: 2px solid white;
-    box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
-    backdrop-filter: blur(6px);
-    border-radius: 17px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.5s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    user-select: none;
-    font-weight: bolder;
-    color: black;
+
+  #dashboard-menu:hover {
+    transform: translate(-1.5%, -1.5%);
+    transition: transform 0.45s;
   }
-  
-  .card:hover {
-    border: 1px solid black;
-    transform: scale(1.05);
+
+
+  #table-div {
+    margin-bottom: 10px;
   }
-  
-  .card:active {
-    transform: scale(0.95) rotateZ(1.7deg);
-  } */
+
+  #dashboard-list:hover {
+    background-color: #3b82f6;
+    color: white;
+  }
+
+  h3{
+    font-weight: bold;
+  }
+
 
   .card1 {
     box-sizing: border-box;
     width: 28vw;
     height: 12em;
-    background: rgba(217, 217, 217, 0.879);
-    border: 2px solid rgb(0, 0, 0);
+    background: rgba(255, 255, 255, 0.879);
     box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
     /* box-shadow:  20px 20px 48px #989898,
              -20px -20px 48px #ffffff; */
@@ -93,7 +40,7 @@
     border-radius: 17px;
     text-align: center;
     cursor: pointer;
-    transition: all 0.5s;
+    transition: all 0.3s;
     display: flex;
     flex-direction: column;
     /* align-items: center; */
@@ -104,7 +51,8 @@
   }
   
   .card1:hover {
-    border: 1px solid black;
+    background: rgb(255, 255, 255);
+    color: black;
     transform: scale(1.05);
   }
   
@@ -118,13 +66,14 @@
     border-radius: 25px;
     border: none;
     font-weight: bold;
-    background: #ffffff;
-    color: rgb(179, 97, 97);
+    background: #0777ff;
+    color: rgb(255, 255, 255);
     transition: .4s ease-in-out;
   }
+
   .card1 button:hover {
-    background: rgb(179, 97, 97);
-    color: white;
+    background: rgb(255, 255, 255);
+    color: black;
     cursor: pointer;
   }
 
@@ -135,8 +84,53 @@
     box-sizing: border-box;
     width: 28vw;
     height: 12em;
-    background: #cc8888;
+    background: #ffffff;
     border: 2px solid white;
+    box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(6px);
+    border-radius: 17px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.5s;
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+    color: black;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .card:active {
+    transform: scale(0.95) rotateZ(1.7deg);
+  }
+  .card button {
+    /* padding: 2em 6em; */
+    display: block;
+    margin: auto;
+    border-radius: 25px;
+    border: none;
+    font-weight: bold;
+    background: #0777ff;
+    color: rgb(255, 255, 255);
+    transition: .4s ease-in-out;
+  }
+  .card button:hover {
+    background: rgb(255, 255, 255);
+    color: black;
+    cursor: pointer;
+    border: solid 1px black;
+  }
+
+
+
+
+  .card2 {
+    box-sizing: border-box;
+    width: 28vw;
+    height: 12em;
+    background: #ffffff;
     box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
     /* box-shadow:  20px 20px 48px #989898,
              -20px -20px 48px #ffffff; */
@@ -155,60 +149,7 @@
     color: black;
   }
   
-  .card:hover {
-    border: 1px solid black;
-    transform: scale(1.05);
-  }
-  
-  .card:active {
-    transform: scale(0.95) rotateZ(1.7deg);
-  }
-  .card button {
-    /* padding: 2em 6em; */
-    display: block;
-    margin: auto;
-    border-radius: 25px;
-    border: none;
-    font-weight: bold;
-    background: rgba(217, 217, 217, 0.879)  ;
-    color: rgb(0, 0, 0);
-    transition: .4s ease-in-out;
-  }
-  .card button:hover {
-    background: rgb(0, 0, 0);
-    color: white;
-    cursor: pointer;
-  }
-
-
-
-
-  .card2 {
-    box-sizing: border-box;
-    width: 28vw;
-    height: 12em;
-    background: #ffffff;
-    border: 2px solid rgb(179, 97, 97);
-    box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
-    /* box-shadow:  20px 20px 48px #989898,
-             -20px -20px 48px #ffffff; */
-    /* clip-path: polygon(30px 0%, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0% 30px); */
-    backdrop-filter: blur(6px);
-    border-radius: 17px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.5s;
-    display: flex;
-    flex-direction: column;
-    /* align-items: center; */
-    /* justify-content: center; */
-    user-select: none;
-    font-weight: bolder;
-    color: rgb(179, 97, 97);
-  }
-  
   .card2:hover {
-    border: 1px solid black;
     transform: scale(1.05);
   }
   
@@ -222,15 +163,14 @@
     border-radius: 25px;
     border: none;
     font-weight: bold;
-    background: #000000;
-    color: #ffffff;
+    background: #0777ff;
+    color: rgb(255, 255, 255);
     transition: .4s ease-in-out;
   }
+
   .card2 button:hover {
-    background: rgba(217, 217, 217, 0.879);
-    color: rgb(179, 97, 97);
+    background: rgb(255, 255, 255);
+    color: black;
     cursor: pointer;
   }
-
-  
 

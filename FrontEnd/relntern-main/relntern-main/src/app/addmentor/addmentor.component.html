@@ -44,16 +44,16 @@
 
 </head>
 
-<body class="bg-white-100">
+<body class="md:px-6 h-auto bg-white-100">
   <nav>
-    <header class="bg-white py-4">
+    <header class="py-4">
       <div class="container mx-auto flex justify-between items-center px-4">
-        <h1 class="text-black text-xl font-bold flex items-center">
-          <img class="mx-auto h-10 w-auto"
+        <div class="text-black text-xl font-bold flex items-center">
+          <img class="mx-auto md:h-16 h-12 w-auto cursor-pointer"
             src="https://1000logos.net/wp-content/uploads/2021/08/Reliance-Industries-Limited-RIL-Logo-500x314.jpg"
             alt="Your Company" (click)="navigateTo()">
 
-        </h1>
+        </div>
         <nav>
           <ul class="flex space-x-4 text-black">
             <li>
@@ -74,7 +74,7 @@
       </div>
     </header>
   </nav>
-  <nav aria-label="breadcrumb">
+  <nav aria-label="breadcrumb" class="mt-4">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a (click)="navigateTo()">Home</a></li>
       <li class="breadcrumb-item active" aria-current="page">Add Mentor</li>

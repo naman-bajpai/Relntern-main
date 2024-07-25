@@ -27,9 +27,7 @@ export class InternprofileComponent {
   uploadedFiles: any;
 
   ngOnInit(): void {
-    // console.log(this.router.url);
     this.roledesc=localStorage.getItem("role");
-    // this.userid=localStorage.getItem("userId");
     this.validaterole(this.roledesc);
     this.todaysDate();
     this.getDocuments();
