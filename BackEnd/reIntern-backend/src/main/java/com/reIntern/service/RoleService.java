@@ -9,11 +9,11 @@ import com.reIntern.repository.RoleRepository;
 public class RoleService {
 
     @Autowired
-    private RoleRepository roleRepo;
+    private RoleRepository roleRepository;
 
     public Role loginValidation(String username, String password) {
-        Role user = roleRepo.loginValidation(username, password);
+        Role user = roleRepository.loginValidation(username, password);
         System.out.println("Current: " + user);
-        return user;
+        return roleRepository.findByUsernameAndPassword(username, password);
     }
 }

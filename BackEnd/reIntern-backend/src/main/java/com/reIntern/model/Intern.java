@@ -315,6 +315,4 @@ public class Intern {
 				+ ", semester=" + semester + ", task=" + task + ", description=" + description + ", start=" + start
 				+ ", end=" + end + "]";
 	}
-    
-    
 }

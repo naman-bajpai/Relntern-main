@@ -13,4 +13,6 @@ public interface RoleRepository extends JpaRepository<Role, Integer>{
 
     @Query(value="SELECT * FROM user WHERE username=?1 and password=?2",nativeQuery=true)
     Role loginValidation(String username,String password);
+    
+    Role findByUsernameAndPassword(String username, String password);
 }

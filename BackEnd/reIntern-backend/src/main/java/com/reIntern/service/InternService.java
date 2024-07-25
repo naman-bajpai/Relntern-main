@@ -1,7 +1,6 @@
 package com.reIntern.service;
 
 import java.util.Collections;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -9,34 +8,38 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
 import com.reIntern.model.Intern;
-
+import com.reIntern.model.Role;
 import com.reIntern.repository.InternRepository;
-
+import com.reIntern.repository.RoleRepository;
 
 @Service
 public class InternService {
 
-	@Autowired
-	private InternRepository internRepository;
+    @Autowired
+    private InternRepository internRepository;
 
-
-	@Autowired
-	private EmailService emailService;
-
+    @Autowired
+    private RoleRepository roleRepository;
 
 	public Intern registerIntern(Intern intern) {
-		try {
-			intern.setIsActive(true);
-//			emailService.sendEmail(intern.getEmail(), intern.getFullname(), intern.getAssociation(),
-//					intern.getProjectname(), intern.getMentor());
-			return internRepository.save(intern);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-		return null;
-	}
+        try {
+            intern.setIsActive(true);
+            Intern savedIntern = internRepository.save(intern);
+
+            Role role = new Role();
+            role.setUsername(intern.getEmail());
+            role.setPassword(intern.getPassword());
+            role.setRole("intern");
+            roleRepository.save(role);
+
+            return savedIntern;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
 
 	public List<Intern> getInterns() {
 		return (List<Intern>) internRepository.findAll();
@@ -128,10 +131,6 @@ public class InternService {
 			if (optionalActiveIntern.isPresent()) {
 				Intern intern = optionalActiveIntern.get();
 				intern.setIsActive(false);
-//				emailService.sendEmailtoHR(intern.getFullname(), intern.getEmail(), intern.getStartDate(),
-//						intern.getEndDate(), intern.getDomainid(), intern.getProjectname(), intern.getMentor());
-//				emailService.sendEmailtoDeactivate(intern.getFullname(), intern.getStartDate(), intern.getEndDate(),
-//						intern.getDomainid());
 				internRepository.save(intern);
 			}
 		} catch (Exception ex) {
