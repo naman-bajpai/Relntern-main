@@ -1,6 +1,7 @@
 package com.reIntern.service;
 
 import java.util.Collections;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -10,8 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.reIntern.model.Intern;
 import com.reIntern.model.Role;
+import com.reIntern.model.user;
 import com.reIntern.repository.InternRepository;
 import com.reIntern.repository.RoleRepository;
+import com.reIntern.repository.UserRepositry;
 
 @Service
 public class InternService {
@@ -21,17 +24,23 @@ public class InternService {
 
     @Autowired
     private RoleRepository roleRepository;
-
-	public Intern registerIntern(Intern intern) {
+    
+    @Autowired
+    private UserRepositry userrepo;
+    
+    @Transactional
+    public Intern registerIntern(Intern intern) {
         try {
             intern.setIsActive(true);
             Intern savedIntern = internRepository.save(intern);
+            
+            user newUser = new user();
+            newUser.setId(savedIntern.getId()); // Set the ID of the user to be the same as the intern
+            newUser.setUsername(intern.getEmail());
+            newUser.setPassword(intern.getPassword());
+            newUser.setRole("intern");
 
-            Role role = new Role();
-            role.setUsername(intern.getEmail());
-            role.setPassword(intern.getPassword());
-            role.setRole("intern");
-            roleRepository.save(role);
+            userrepo.save(newUser);
 
             return savedIntern;
         } catch (Exception ex) {
@@ -39,6 +48,24 @@ public class InternService {
         }
         return null;
     }
+    
+//	public Intern registerIntern(Intern intern) {
+//        try {
+//            intern.setIsActive(true);
+//            Intern savedIntern = internRepository.save(intern);
+//
+//            Role role = new Role();
+//            role.setUsername(intern.getEmail());
+//            role.setPassword(intern.getPassword());
+//            role.setRole("intern");
+//            roleRepository.save(role);
+//
+//            return savedIntern;
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//        }
+//        return null;
+//    }
 
 
 	public List<Intern> getInterns() {
