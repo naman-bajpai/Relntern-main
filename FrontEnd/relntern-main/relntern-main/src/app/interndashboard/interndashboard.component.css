@@ -2,11 +2,13 @@
     box-shadow:10px 15px 8px 5px #828282     
 }
 
-
 .material-symbols-outlined {
   font-variation-settings:
   'FILL' 0,
   'wght' 400,
   'GRAD' 0,
   'opsz' 70
+}
+#userDropdown {
+  border: 1px solid black;
 }
