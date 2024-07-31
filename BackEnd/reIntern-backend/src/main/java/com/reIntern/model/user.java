@@ -16,7 +16,6 @@ public class user {
 
 	public user() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public user(int id, String username, String password, String role) {
@@ -65,7 +64,6 @@ public class user {
 	}
 
 	public String get(String string) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

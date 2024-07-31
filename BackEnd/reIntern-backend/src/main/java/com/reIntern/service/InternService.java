@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.reIntern.model.Intern;
 import com.reIntern.model.Role;
+import com.reIntern.model.*;
 import com.reIntern.repository.InternRepository;
 import com.reIntern.repository.RoleRepository;
 import com.reIntern.repository.*;
@@ -34,6 +35,9 @@ public class InternService {
 
 //            Role role = new Role(intern.getEmail(), intern.getPassword(), "intern");
 //            roleRepository.save(role);
+            
+            User role = new User(intern.getEmail(), intern.getPassword(), "intern");
+            userRepository.save(user);
 
             return savedIntern;
         } catch (Exception ex) {
