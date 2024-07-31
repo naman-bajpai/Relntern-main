@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Relntern Manager</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
-  
+
   <style>
-      @keyframes typing {
+    @keyframes typing {
       from {
         width: 0;
       }
@@ -45,23 +45,12 @@
         <div class="flex items-center justify-center space-x-1 text-black">
           <div class="mr-3">
             <div class="font-bold text-xl flex justify-center">{{mentorDetails.mentorname}}</div>
-            <div class="flex justify-end text-lg font-semibold italic">Mentor</div>
+            <div class="flex justify-end text-xl font-semibold italic">Mentor</div>
           </div>
 
-          <div>
-            <button mat-button [matMenuTriggerFor]="menu"
-              class="border-2 shadow-lg rounded-lg md:px-4 py-2 text-white bg-gradient-to-r from-blue-500 via-blue-700 to-blue-800 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80">
-              <img class="h-10" src="../../assets/icons8-account.gif">
-              <mat-icon>keyboard_arrow_down</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu">
-              <button
-                class="justify-center text-lg font-bold text-white bg-gradient-to-l from-blue-200 via-blue-300 to-blue-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80"
-                mat-menu-item (click)="logout()">
-                <u>Logout</u>
-              </button>
-            </mat-menu>
-          </div>
+          <div id="Add_Mentor"><button type="button"
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+              (click)="logout()">Logout</button></div>
         </div>
       </div>
     </header>
@@ -77,17 +66,17 @@
     <div class="md:flex md:justify-between">
       <div class="card w-full md:wx-1/3">
         <div class="md:pt-4 md:text-4xl text-black flex items-center justify-center ">Add Interns</div>
-        <button (click)="goToPage('add')" class="md:px-28 md:py-4 text-center md:text-2xl" >Add</button>
+        <button (click)="goToPage('add')" class="md:px-28 md:py-4 text-center md:text-2xl">Add</button>
       </div>
 
       <div class="card w-full md:w-1/3">
         <div class="pt-4 md:text-4xl flex items-center justify-center text-black">List of Interns</div>
-        <button (click)="goToPage('list')" class="md:px-28 md:py-4 text-center md:text-2xl" >View </button>
+        <button (click)="goToPage('list')" class="md:px-28 md:py-4 text-center md:text-2xl">View </button>
       </div>
 
       <div class="card w-full md:w-1/3">
         <div class="pt-4 md:text-4xl flex items-center justify-center  ">View Schedule</div>
-        <button (click)="goToPage('schedule')" class="md:px-28 md:py-4 text-center md:text-2xl" >View</button>
+        <button (click)="goToPage('schedule')" class="md:px-28 md:py-4 text-center md:text-2xl">View</button>
       </div>
     </div>
 
@@ -107,7 +96,8 @@
               <td class="py-5 px-4">{{intern.fullname}}</td>
               <td class="py-5 px-4">{{intern.projectname}}</td>
               <td class="py-5 px-4">
-                <button class="px-4 py-2 rounded-lg shadow-md border-2 hover:border-black hover:bg-slate-600 hover:text-white"
+                <button
+                  class="px-4 py-2 rounded-lg shadow-md border-2 hover:border-black hover:bg-slate-600 hover:text-white"
                   (click)="gotopage(intern.id)">Tasks</button>
               </td>
               <td class="py-5 px-4">

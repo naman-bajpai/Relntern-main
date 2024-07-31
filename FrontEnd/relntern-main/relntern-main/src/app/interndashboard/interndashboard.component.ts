@@ -11,12 +11,6 @@ import { InternprofileComponent } from '../internprofile/internprofile.component
   styleUrls: ['./interndashboard.component.css'],
 })
 export class InterndashboardComponent implements OnInit {
-  // internDetails: any;
-  // userid: number;
-  // taskdetails: any[];
-  // internId: number;
-  // roledes: string;
-  // dropdownOpen = false;
 
   internDetails: any;
   userid: any;
