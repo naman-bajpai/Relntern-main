@@ -62,9 +62,16 @@
                   {{roledesc}}</h2>
               </a>
             </li>
+            <div id="Add_Mentor"><button type="button"
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+              (click)="goToPage('list')">Active Interns</button></div>
+            <div id="Add_Mentor"><button type="button"
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+              (click)="goToPage('mentorlist')">Mentor List</button></div>  
             <li id="Add_Mentor"><button type="button"
                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
                 (click)="goToPage('inactive')" *ngIf="isMentor || isAdmin">Past Interns</button></li>
+            
             <!-- <li id="Add_Mentor"><button type="button"
                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
                 (click)="goToPage('addmentor')" *ngIf="isAdmin">Add Mentor</button></li>
@@ -83,10 +90,18 @@
 
   <nav aria-label="breadcrumb" class="mt-4">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item  active"><a (click)="navigateTo()"><mat-icon>home</mat-icon></a></li>
-      <li class="breadcrumb-item" aria-current="page">List of Interns</li>
+      <li class="breadcrumb-item active">
+        <a (click)="navigateTo()"><mat-icon>home</mat-icon></a>
+      </li>
+      <li class="breadcrumb-item" aria-current="page">List of Active Interns</li>
+      <li class="ml-auto">
+        <button type="button"
+          class="bg-red-700 hover:bg-red-800 text-white font-bold py-1.5 px-4 rounded"
+          (click)="logout()">Logout</button>
+      </li>
     </ol>
   </nav>
+  
 
   <div class="container mx-auto mt-4 px-4">
     <div id="table-div" class="bg-white rounded-xl shadow-lg overflow-x-auto">

@@ -82,7 +82,7 @@ export class AddComponent implements OnInit {
     phone: new FormControl("", [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern("[0-9]*")]),
     dob: new FormControl('', [Validators.required, this.dateOfBirthValidator]),
     location: new FormControl('', [Validators.required, Validators.maxLength(25)]),
-    reference: new FormControl('', Validators.required),
+    reference: new FormControl(''),
 
     gradyear: new FormControl('', Validators.required),
     uniname: new FormControl('', Validators.required),
