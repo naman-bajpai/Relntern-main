@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { InternService } from '../intern.service';
@@ -8,74 +8,73 @@ import { InternService } from '../intern.service';
   templateUrl: './addmentor.component.html',
   styleUrls: ['./addmentor.component.css']
 })
-export class AddmentorComponent implements OnInit {
-  mentorDetails: {
-    mentorname?: string;
-    mentoremail?: string;
-    l1name?: string;
-    l1email?: string;
-    Role?: string;
-    association?: string;
-  } = {};
-  roledesc: string | null = '';
-  isAdmin: boolean = false;
-  isMentor: boolean = false;
-  isIntern: boolean = false;
-
-  constructor(private router: Router, private internService: InternService) {}
+export class AddmentorComponent {
+  mentorDetails: any;
+registerForm: any;
+  
+  
+  constructor(private router:Router, private internService : InternService) { }
+  
 
   ngOnInit(): void {
-    this.roledesc = localStorage.getItem('role');
-    this.validateRole(this.roledesc);
+    this.roledesc=localStorage.getItem("role");
+    this.validaterole(this.roledesc);
   }
-
   register(registerForm: NgForm) {
     if (registerForm.valid) {
-      this.internService.registerMentor(this.mentorDetails).subscribe(
+      this.internService.registerMentor(registerForm.value).subscribe(
         (resp: any) => {
-          console.log('Registration successful', resp);
+          console.log(resp);
           registerForm.resetForm();
           this.router.navigate(['/mentorlist']);
         },
         (err: any) => {
-          console.error('Registration error', err);
+          console.log(err);
         }
       );
     } else {
+      // Handle form validation errors
       console.log('Form is invalid');
     }
   }
+  isAdmin: boolean=false;
+  isMentor: boolean=false;
+  isintern: boolean=false;
+  roledesc: any;
 
-  validateRole(roledesc: string | null) {
-    switch (roledesc) {
-      case 'admin':
-        this.isAdmin = true;
-        break;
-      case 'mentor':
-        this.isMentor = true;
-        break;
-      default:
-        this.isIntern = true;
-        break;
+  
+  
+  validaterole(roledesc:any){
+    if(roledesc=="admin"){
+      this.isAdmin=true;
     }
-  }
-
-  navigateTo(): void {
-    if (this.isAdmin) {
-      this.router.navigate(['dashboard']);
-    } else if (this.isMentor) {
-      this.router.navigate(['mentordashboard']);
-    } else if (this.isIntern) {
-      this.router.navigate(['interndashboard']);
+    else if(roledesc=="mentor"){
+      this.isMentor=true
     }
+    else{
+      this.isintern=true;
+    }
+    }
+    navigateTo():void{//this is to navigate to particular dashboard according to their role
+      if(this.isAdmin){
+      this.router.navigate([`dashboard`]);
+      }
+      else if(this.isMentor){
+        this.router.navigate([`mentordashboard`]);
+      }
+      else if(this.isintern){
+        this.router.navigate([`interndashboard`]);
+      }
+      else{
+      }
+    }
+    logout(){
+      localStorage.removeItem('role')
+      this.router.navigate([``]);
+    }
+
+  goToPage(pageName:string):void{
+    this.router.navigate([`${pageName}`]);
   }
 
-  logout() {
-    localStorage.removeItem('role');
-    this.router.navigate(['']);
-  }
-
-  goToPage(pageName: string): void {
-    this.router.navigate([pageName]);
-  }
 }

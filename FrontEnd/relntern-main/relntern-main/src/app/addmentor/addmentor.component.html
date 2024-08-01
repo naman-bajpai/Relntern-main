@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,26 +13,36 @@
       height: 50px;
       border-radius: 50%;
     }
+
     button:hover {
       background-color: #4CAF50;
       color: white;
       transition: ease 0.5s;
     }
+
     @keyframes typing {
-      from { width: 0; }
+      from {
+        width: 0;
+      }
     }
+
     @keyframes blink {
-      50% { border-color: transparent; }
+      50% {
+        border-color: transparent;
+      }
     }
+
     #dashboard-menu:hover {
       transform: translate(-1.5%, -1.5%);
       transition: transform 0.45s;
     }
+
     #table-div {
       margin-bottom: 10px;
     }
   </style>
 </head>
+
 <body class="md:px-6 h-auto bg-white-100">
   <nav>
     <header class="py-4">
@@ -44,7 +55,9 @@
         <nav>
           <ul class="flex space-x-4 text-black">
             <li>
-              <a><h2 class="text-black font-bold py-2 px-4 rounded mt-4">{{roledesc}}</h2></a>
+              <a>
+                <h2 class="text-black font-bold py-2 px-4 rounded mt-4">{{roledesc}}</h2>
+              </a>
             </li>
             <li id="Add_Mentor"><button type="button"
                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
@@ -69,65 +82,111 @@
   <main class="container mx-auto mt-8 px-4">
     <div class="bg-white rounded-lg shadow-lg p-8">
       <h2 class="text-2xl font-bold mb-4">Add Mentor</h2>
-      <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+      <form #registerForm="ngForm" (ngSubmit)="register(registerForm)" novalidate>
+
+        <!-- Alert for mandatory fields -->
+        <div *ngIf="registerForm.invalid && registerForm.submitted" class="alert">
+          Please fill in all mandatory fields.
+        </div>
+
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div>
-            <label class="block text-gray-700 font mb-2" for="mentorname">Mentor Name</label>
-            <input type="text" id="mentorname" name="mentorname"
+            <label class="block text-gray-700 font mb-2 required" for="mentorname">Mentor Name</label>
+            <input type="text" id="mentorname" name="mentorname" ngModel
               class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter Mentor name" [(ngModel)]="mentorDetails.mentorname" #mentorname="ngModel" required>  
+              placeholder="Enter Mentor name" required #mentorname="ngModel" pattern="[a-zA-Z\s]*"
+              [class.invalid]="mentorname.invalid && (registerForm.submitted || mentorname.touched)">
+            <div *ngIf="mentorname.invalid && (registerForm.submitted || mentorname.touched)" class="error-message">
+              <div *ngIf="mentorname.errors?.['required']" class="warning">Mentor Name is required.</div>
+              <div *ngIf="mentorname.errors?.['pattern']">Mentor Name must only contain letters and spaces.</div>
+            </div>
           </div>
+
           <div>
-            <label class="block text-gray-700 font mb-2" for="mentoremail">Mentor Email</label>
-            <input type="email" id="mentoremail" name="mentoremail"
+            <label class="block text-gray-700 font mb-2 required" for="mentoremail">Mentor Email</label>
+            <input type="email" id="mentoremail" name="mentoremail" ngModel
               class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter mentor email" [(ngModel)]="mentorDetails.mentoremail" #mentoremail="ngModel" required email>
+              placeholder="Enter mentor email" required #mentoremail="ngModel" pattern="^[^\d\s]+@[^\d\s]+\.[^\d\s]+$"
+              [class.invalid]="mentoremail.invalid && (registerForm.submitted || mentoremail.touched)">
+            <div *ngIf="mentoremail.invalid && (registerForm.submitted || mentoremail.touched)" class="error-message">
+              <div *ngIf="mentoremail.errors?.['required']" class="warning">Mentor Email is required.</div>
+              <div *ngIf="mentoremail.errors?.['pattern']">Enter a valid email address without numbers.</div>
+            </div>
           </div>
+
           <div>
-            <label class="block text-gray-700 font mb-2" for="l1name">L1 Name</label>
-            <input type="text" id="l1name" name="l1name"
+            <label class="block text-gray-700 font mb-2 required" for="l1name">L1 Name</label>
+            <input type="text" id="l1name" name="l1name" ngModel
               class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter L1 name" [(ngModel)]="mentorDetails.l1name" #l1name="ngModel" required>
+              placeholder="Enter L1 name" required #l1name="ngModel" pattern="[a-zA-Z\s]*"
+              [class.invalid]="l1name.invalid && (registerForm.submitted || l1name.touched)">
+            <div *ngIf="l1name.invalid && (registerForm.submitted || l1name.touched)" class="error-message">
+              <div *ngIf="l1name.errors?.['required']" class="warning">L1 Name is required.</div>
+              <div *ngIf="l1name.errors?.['pattern']">L1 Name must only contain letters and spaces.</div>
+            </div>
           </div>
+
           <div>
-            <label class="block text-gray-700 font mb-2" for="l1email">L1 Email</label>
-            <input type="email" id="l1email" name="l1email"
+            <label class="block text-gray-700 font mb-2 required" for="l1email">L1 Email</label>
+            <input type="email" id="l1email" name="l1email" ngModel
               class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter L1 Email" [(ngModel)]="mentorDetails.l1email" #l1email="ngModel" required>
+              placeholder="Enter L1 Email" required #l1email="ngModel" pattern="^[^\d\s]+@[^\d\s]+\.[^\d\s]+$"
+              [class.invalid]="l1email.invalid && (registerForm.submitted || l1email.touched)">
+            <div *ngIf="l1email.invalid && (registerForm.submitted || l1email.touched)" class="error-message">
+              <div *ngIf="l1email.errors?.['required']" class="warning">L1 Email is required.</div>
+              <div *ngIf="l1email.errors?.['pattern']">Enter a valid email address without numbers.</div>
+            </div>
           </div>
+
           <div class="col-span-2">
-            <label class="block text-gray-700 font mb-2" for="Role">Role</label>
-            <input type="text" id="Role" name="Role"
+            <label class="block text-gray-700 font mb-2 required" for="Role">Role</label>
+            <input type="text" id="Role" name="Role" ngModel
               class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Ex. Full-Stack Developer" [(ngModel)]="mentorDetails.Role" #Role="ngModel" required>
+              placeholder="Ex. Full-Stack Developer" required #Role="ngModel" pattern="[a-zA-Z\s]*"
+              [class.invalid]="Role.invalid && (registerForm.submitted || Role.touched)">
+            <div *ngIf="Role.invalid && (registerForm.submitted || Role.touched)" class="error-message">
+              <div *ngIf="Role.errors?.['required']" class="warning">Role is required.</div>
+              <div *ngIf="Role.errors?.['pattern']">Role must only contain letters and spaces.</div>
+            </div>
           </div>
+
           <div class="col-span-2">
-            <label class="block text-gray-700 font mb-2" for="association">Association</label>
-            <select id="association" name="association"
+            <label class="block text-gray-700 font mb-2 required" for="association">Association</label>
+            <select id="association" name="association" ngModel
               class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-              [(ngModel)]="mentorDetails.association" #association="ngModel" required>
+              required #association="ngModel" [class.invalid]="association.invalid && (registerForm.submitted || association.touched)">
               <option value="" disabled selected>Select association</option>
               <option value="PetChem IT">PetChem IT</option>
               <option value="Finance">Finance</option>
               <option value="Marketing">Marketing</option>
               <option value="HR">HR</option>
             </select>
+            <div *ngIf="association.invalid && (registerForm.submitted || association.touched)" class="error-message">
+              <div *ngIf="association.errors?.['required']" class="warning">Association is required.</div>
+            </div>
           </div>
         </div>
+
         <div class="mt-6">
           <ul class="flex space-x-4 text-black">
-            <li> <button type="submit"
+            <li>
+              <button type="submit" [disabled]="registerForm.invalid"
                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 Save
-              </button> </li>
-              <li> <button type="button" (click)="navigateTo()"
-                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+              </button>
+            </li>
+            <li>
+              <button type="button" (click)="navigateTo()"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                style="background-color: #7c0d0d;">
                 Cancel
-              </button> </li>
+              </button>
+            </li>
           </ul>
         </div>
       </form>
     </div>
   </main>
 </body>
+
 </html>
