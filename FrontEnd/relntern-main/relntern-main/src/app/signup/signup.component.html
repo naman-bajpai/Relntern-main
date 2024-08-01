@@ -1,65 +1,88 @@
-<div class="flex min-h-full items-center justify-center big-bg ">
+<style>
+  button {
+    color: #3b82f6;
+    background-color: #3b82f6;
+  }
+</style>
 
-  <div class="max-w-md w-full mx-auto p-8 bg-white rounded-xl login-container shadow-2xl">
+<div class="flex min-h-full items-center justify-center bg-gray-100 hide-sb ">
+
+  <div class="max-w-md w-full mx-auto p-8 bg-white rounded-lg login-container shadow-bottom">
     <div class="flex justify-center">
       <img class="h-16 w-auto"
         src="https://1000logos.net/wp-content/uploads/2021/08/Reliance-Industries-Limited-RIL-Logo-500x314.jpg"
         alt="Your Company">
     </div>
-
-    <h2 class="mt-4 text-2xl font-bold text-center text-gray-800"><u>Intern Login
-        <i class="fa-solid fa-arrow-right "></i></u></h2>
+    <h2 class="mt-6 text-2xl font-bold text-center text-gray-800">Sign up to Continue <i
+        class="fa-solid fa-arrow-right "></i></h2>
 
     <form class="mt-8 space-y-6" [formGroup]="myForm" (ngSubmit)="onSubmit()">
       <div>
         <div class="flex">
-          <label for="email" class=" text-lg font-medium text-gray-700 mr-2">Email</label>
+          <label for="email" class="text-lg font-medium text-gray-700 mr-2">Email</label>
           <div class="form-text text-danger font flex items-start" *ngIf="email.errors?.['required']">
             *
           </div>
-          <div class=" text-danger mr-3 flex items-start italic text-base"
+          <div class="text-danger mr-3 flex items-start italic text-base"
             *ngIf="email.errors?.['email'] && (email.touched || email.dirty)">
             Invalid Email
           </div>
         </div>
         <div class="input-group mb-2">
-          <!-- <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-envelope"></i></span> -->
           <input type="email" formControlName="email" placeholder="Enter your registered Email"
-            class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+            class=" rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
             name="email">
         </div>
       </div>
 
       <div>
         <div class="flex">
-          <label for="password" class=" text-lg font-medium text-gray-700 mr-2">Password</label>
-          <div class="form-text text-danger font flex items-start" *ngIf="email.errors?.['required']">
+          <label for="password" class="text-lg font-medium text-gray-700 mr-2">Password</label>
+          <div class="form-text text-danger font flex items-start" *ngIf="password.errors?.['required']">
             *
           </div>
         </div>
         <div class="input-group mb-3 flex">
-          <input type="password" formControlName="password" placeholder="Enter valid Password"
-            class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-            name="password" [(ngModel)]="passw">
-
+          <input type="password" formControlName="password" placeholder="Enter Password"
+            class="rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+            name="password">
         </div>
       </div>
 
+      <div>
+        <div class="flex">
+          <label for="confirmPassword" class="text-lg font-medium text-gray-700 mr-2">Re-Enter Password</label>
+          <div class="form-text text-danger font flex items-start" *ngIf="rpwd.errors?.['required']">
+            *
+          </div>
+        </div>
+        <div class="input-group  flex">
+          <input type="password" placeholder="Re-Enter Password"
+            class=" rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+            name="confirmPassword" formControlName="rpwd">
+        </div>
+        <div class="form-text text-danger" *ngIf="passwordMismatch">
+          Passwords do not match
+        </div>
+      </div>
 
       <div class="flex items-center justify-center">
         <button type="submit"
-          class=" py-2 px-16 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-          Login as Intern
+          class="py-2 px-16 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          Register
         </button>
-
       </div>
-
     </form>
-    <div class="flex items-center justify-center">
-      <button type="submit"
-        class=" py-2 px-16 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"  (click)="goToPage('login')" >
-        Go back
-      </button>
+
+    <div class="mt-6 text-center">
+      <div class="">Already registered?</div>
+      <a (click)="goToPage('login')"
+        class="text-sm font-medium text-indigo-600 hover:text-indigo-500 underline-offset-2"><u>Login here</u></a>
     </div>
+  </div>
+
+  <div class="right-container">
+    <p class="flex min-h-full items-center justify-center">Welcome to Relntern!</p>
+    <div class="circle"></div>
   </div>
 </div>

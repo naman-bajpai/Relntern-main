@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormControl, NgForm, Validators } from '@angular/forms';
 import { InternService } from '../intern.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-task',
@@ -10,13 +11,18 @@ import { AuthService } from '../service/auth.service';
   styleUrls: ['./add-task.component.css']
 })
 export class AddTaskComponent {
+// Status: any;
+onClick() {
+throw new Error('Method not implemented.');
+}
   registerForm: any;
   internId:any;
-  // mentor_id : any;
   mentoruserid: any;
   mentor_id: any;
-
+  statusList = ["Inprogress" , "Completed", ];
+ 
   constructor(private internService: InternService, private router: Router,
+   
     private formBuilder: FormBuilder,private routes : ActivatedRoute)
     {
       this.registerForm = this.formBuilder.group({
@@ -24,14 +30,14 @@ export class AddTaskComponent {
         description: ['', Validators.required],
         start: ['', Validators.required],
         end: ['', Validators.required],
-        // status: new FormControl('To-Do')
+        status: ['', Validators.required],
         // mentor_id: []
       });
     }
 
     ngOnInit(): void {
       this.internId = this.routes.snapshot.paramMap.get("internId");
-      // console.log(this.internId)
+       
 
       this.roledesc=localStorage.getItem("role");
       this.validaterole(this.roledesc);
@@ -58,17 +64,18 @@ export class AddTaskComponent {
   register(registerForm: NgForm) {
     // console.log(this.mentoruserid);
     console.log(this.mentor_id);
+    console.log(this.registerForm.value);
     
     
-    if (registerForm.valid) {
-      let taskDetail = registerForm.value
+    if (this.registerForm.valid) {
+      let taskDetail = this.registerForm.value
       taskDetail['mentor_id'] = this.mentor_id
-      taskDetail['status'] = "To-Do"
+     // taskDetail['status'] = "To-Do"
 
       this.internService.registerTask(taskDetail,this.internId).subscribe(
         (resp: any) => {
           console.log(resp);
-          registerForm.resetForm();
+          this.registerForm.reset();
           this.router.navigate(['/list']);
         },
         (err: any) => {
