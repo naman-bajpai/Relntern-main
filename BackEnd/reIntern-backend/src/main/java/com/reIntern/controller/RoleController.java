@@ -2,14 +2,12 @@ package com.reIntern.controller;
 
 import com.reIntern.model.Task;
 import com.reIntern.repository.InternRepository;
-import com.reIntern.repository.RoleRepository;
 import com.reIntern.repository.TaskRepository;
 import com.reIntern.repository.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,6 +53,7 @@ public class RoleController {
 		JSONObject result = new JSONObject();
 		String email = (String) user.get("email");
 		String password = (String) user.get("password");
+		
 
 		if (userrepo.findByUsername(email) != null) {
 			result.put("result", "User already exists");
@@ -62,6 +61,7 @@ public class RoleController {
 			Intern interndetails = internrepository.findByEmail(email);
 			System.out.println(interndetails);
 			user newuser = new user();
+			//newuser.setId(interndetails.getId());
 			newuser.setUsername(email);
 			newuser.setPassword(password);
 			newuser.setRole("intern");

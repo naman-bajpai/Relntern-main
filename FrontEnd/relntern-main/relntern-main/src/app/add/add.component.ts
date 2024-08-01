@@ -27,7 +27,7 @@ export class AddComponent implements OnInit {
   selectedMentor!: String;
   // mentors: any[] = [];
   //quarterarray:string[]=[];
-   
+
   toppingList: string[] = ['Q1', 'Q2', 'Q3', 'Q4'];
   show: boolean = false;
 
@@ -43,7 +43,7 @@ export class AddComponent implements OnInit {
     });
   }
 
-  
+
   selectmentor(mentor: any) {
     // console.log(mentor.target.value);
     const selectedMentorName = this.registerForm.get('mentor')?.value;
@@ -76,7 +76,6 @@ export class AddComponent implements OnInit {
   registerForm = this.formBuilder.group({
     fullname: new FormControl("", [Validators.required, Validators.minLength(2), Validators.pattern("[a-zA-Z].*")]),
     email: new FormControl("", [Validators.required, Validators.email]),
-    password: new FormControl("",Validators.required),
     role: new FormControl('', [Validators.required]),
     association: new FormControl('', Validators.required),
     phone: new FormControl("", [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern("[0-9]*")]),
@@ -100,29 +99,6 @@ export class AddComponent implements OnInit {
     startDate: new FormControl('', [Validators.required, this.startDateValidator]),
     endDate: new FormControl('', [Validators.required, this.endDateValidator]),
   }, { validators: this.dateRangeValidator });
-
-  //   subscribeToMentorChanges() {  bard
-  //   this.registerForm.get('mentor')?.valueChanges.subscribe((selectedMentor: any) => {
-  //     const selectedMentorObject = this.mentors.find((mentor: { mentorname: string, email: string }) => mentor.mentorname === selectedMentor);
-
-  //     this.registerForm.patchValue({
-  //       mentoremail: selectedMentorObject ? selectedMentorObject.email : ''
-  //     });
-  //   });
-  // }
-
-  // subscribeToMentorChanges() {
-  //   this.registerForm.get('mentor')?.valueChanges.subscribe((selectedMentor:any) => {
-  //     // Find the mentor object based on the selected mentor name
-  //     const selectedMentorObject = this.mentors.find((mentor: { mentorname: string, email: string }) => mentor.mentorname === selectedMentor);
-
-  //     // Update the mentoremail control
-  //     this.registerForm.patchValue({
-  //       mentoremail: selectedMentorObject ? selectedMentorObject.email : ''
-  //     });
-  //   });
-  // }
-
   dateOfBirthValidator(control: FormControl): { [key: string]: any } | null {
     const dob = new Date(control.value);
     const today = new Date();
@@ -191,13 +167,6 @@ export class AddComponent implements OnInit {
     console.log(this.selectedMentor);
     this.internEmail = this.registerForm.get("email")?.value
 
-    // let quarterString= quarterarray.toString();
-    // // quarterarray.forEach(element=> { 
-    // //   quarterString=quarterString+ element;
-    // // });
-
-    // const quarterString:any= (this.registerForm.get("quarterArray")?.value)?.toString();
-    // this.registerForm.get("quarterArray")?.setValue(quarterString)
     const quarterString: any = (this.registerForm.get("quarterArray")?.value)?.toString()
     // console.log((this.registerForm.get("quarterArray")?.value)?.toString());
     this.registerForm.get("quarter")?.setValue(quarterString);
@@ -405,5 +374,5 @@ export class AddComponent implements OnInit {
     this.router.navigate([`${pageName}`]);
   }
 
-  
+
 }
