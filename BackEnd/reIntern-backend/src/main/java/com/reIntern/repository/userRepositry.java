@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.reIntern.model.user;
 
-public interface UserRepositry extends JpaRepository<user,Integer> {
+public interface userRepositry extends JpaRepository<user,Integer> {
 
 	Object findByUsername(String username);
 
