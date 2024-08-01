@@ -18,6 +18,7 @@ import { AddTaskComponent } from './add-task/add-task.component';
 import { ViewTaskComponent } from './view-task/view-task.component';
 import { UpdateDialogBodyComponent } from './update-dialog-body/update-dialog-body.component';
 import { SignupComponent } from './signup/signup.component';
+import { HeadersComponent } from './headers/headers.component';
 
 const routes: Routes = [
   { path: '',redirectTo:"login",pathMatch:"full" }, /**/
@@ -39,6 +40,7 @@ const routes: Routes = [
   { path: 'view-task/:internId', component: ViewTaskComponent},
   { path: 'update-dialog-body', component: UpdateDialogBodyComponent},
   { path: 'signup', component: SignupComponent},
+  { path: 'headers', component: HeadersComponent},
 ];
 
 @NgModule({

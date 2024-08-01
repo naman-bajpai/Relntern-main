@@ -103,10 +103,10 @@ else{
 //     }
 //   );
 // }
-logout(){
-      localStorage.removeItem('role')
-      this.router.navigate([``]);
-}
+// logout(){
+//       localStorage.removeItem('role')
+//       this.router.navigate([``]);
+// }
 
 closeDialog() {
   this.matDialog.closeAll();
