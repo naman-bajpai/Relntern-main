@@ -1,6 +1,5 @@
 package com.reIntern.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,6 +25,7 @@ public class TaskService {
 
         Intern intern = internRepo.findById(id).get();
         intern.getTask().add(task);
+//		return taskRepository.save(task);/
         System.out.println(intern);
         internRepo.save(intern);
     }
@@ -48,11 +48,16 @@ public class TaskService {
         Optional<Task> optionalTask = taskRepository.findById(id);
         if (optionalTask.isPresent()) {
             Task task = optionalTask.get();
+            
+            task.setTask(updatedTask.getTask());
+            task.setDescription(updatedTask.getDescription());
+            task.setStart(updatedTask.getStart());
+            task.setEnd(updatedTask.getEnd());
             task.setStatus(updatedTask.getStatus());
-            task.setActualstart(updatedTask.getActualstart());
-            task.setActualend(updatedTask.getActualend());
+
             return taskRepository.save(task);
         }
         return null;
     }
+
 }
