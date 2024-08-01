@@ -36,8 +36,7 @@ public class InternService {
 //            Role role = new Role(intern.getEmail(), intern.getPassword(), "intern");
 //            roleRepository.save(role);
             
-            User role = new User(intern.getEmail(), intern.getPassword(), "intern");
-            userRepository.save(user);
+
 
             return savedIntern;
         } catch (Exception ex) {
