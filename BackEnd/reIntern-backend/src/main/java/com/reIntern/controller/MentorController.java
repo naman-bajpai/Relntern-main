@@ -37,7 +37,7 @@ public class MentorController {
         return mentorService.getMentorByMentoruserid(mentoruserid);
     }
     
-
+ 
     @DeleteMapping("/deleteMentor")
     public void deleteMentor(@RequestParam Integer mentorid) {
         mentorService.deleteMentor(mentorid);

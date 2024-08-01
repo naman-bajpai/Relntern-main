@@ -4,7 +4,7 @@ import com.reIntern.model.Task;
 import com.reIntern.repository.InternRepository;
 import com.reIntern.repository.RoleRepository;
 import com.reIntern.repository.TaskRepository;
-import com.reIntern.repository.userRepositry;
+import com.reIntern.repository.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -38,7 +38,7 @@ public class RoleController {
 	private InternRepository internrepository;
 
 	@Autowired
-	private userRepositry userrepo;
+	private UserRepositry userrepo;
 
 	@PostMapping("/validates")
 	public Role UserLogin(@RequestBody JSONObject user) {

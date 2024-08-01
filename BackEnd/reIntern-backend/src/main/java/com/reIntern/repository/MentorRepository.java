@@ -10,8 +10,9 @@ import com.reIntern.model.Mentor;
 public interface MentorRepository extends JpaRepository<Mentor,Integer> {
 
 
+	Optional<Mentor> findByMentoremail(int mentoruserid);
 
-	Optional<Mentor> findByMentoruserid(int mentoruserid);
+	Mentor findByMentoruserid(int userid);
 
 	
 //	user_id

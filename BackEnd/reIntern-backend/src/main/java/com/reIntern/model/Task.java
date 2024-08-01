@@ -2,11 +2,12 @@ package com.reIntern.model;
 
 import java.sql.Date;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 /**
@@ -27,6 +28,12 @@ public class Task {
     private Date actualstart;
     private Date actualend;
     
+    
+
+//	@ManyToOne
+//	@JoinColumn(name = "Intern_id")
+//    private Intern intern;
+
 
     public String getStatus() {
 		return status;
