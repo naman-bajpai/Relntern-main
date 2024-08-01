@@ -1,0 +1,21 @@
+2024-07-31 11:22:54,644 [Worker-6: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2024-07-31 11:23:14,293 [Worker-5: Importing Maven projects] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.reIntern:reIntern-backend:0.0.1-SNAPSHOT @ C:\Users\ytiwa\Downloads\Relntern-main\BackEnd\reIntern-backend\pom.xml.
+2024-07-31 11:23:15,894 [Worker-5: Importing Maven projects] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact org.hibernate:hibernate-core:jar:6.0.0.Final has been relocated to org.hibernate.orm:hibernate-core:jar:6.0.0.Final
+2024-07-31 11:23:17,786 [Worker-5: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /reIntern-backend/src/main/java
+2024-07-31 11:23:17,793 [Worker-5: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /reIntern-backend/src/main/resources
+2024-07-31 11:23:17,804 [Worker-5: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /reIntern-backend/src/main/resources
+2024-07-31 11:23:17,812 [Worker-5: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /reIntern-backend/src/test/java
+2024-07-31 11:23:17,814 [Worker-5: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /reIntern-backend/src/test/resources
+2024-07-31 11:23:20,132 [Worker-5: Importing Maven projects] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Imported and configured 1 project(s) in 8 sec
+2024-07-31 11:23:22,921 [Worker-9: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-07-31 11:23:22,965 [Worker-9: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-07-31 11:23:22,977 [Worker-9: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ytiwa\Downloads\Relntern-main\BackEnd\reIntern-backend\src\test\resources
+2024-07-31 11:26:41,943 [Worker-9: Launching reIntern-backend - ReInternBackendApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-07-31 11:26:41,965 [Worker-9: Launching reIntern-backend - ReInternBackendApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-07-31 11:26:41,971 [Worker-9: Launching reIntern-backend - ReInternBackendApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ytiwa\Downloads\Relntern-main\BackEnd\reIntern-backend\src\test\resources
+2024-07-31 11:31:12,045 [Worker-16: Launching reIntern-backend - ReInternBackendApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-07-31 11:31:12,061 [Worker-16: Launching reIntern-backend - ReInternBackendApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-07-31 11:31:12,073 [Worker-16: Launching reIntern-backend - ReInternBackendApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ytiwa\Downloads\Relntern-main\BackEnd\reIntern-backend\src\test\resources
+2024-07-31 11:46:38,507 [Worker-27: Launching reIntern-backend - ReInternBackendApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-07-31 11:46:38,562 [Worker-27: Launching reIntern-backend - ReInternBackendApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-07-31 11:46:38,571 [Worker-27: Launching reIntern-backend - ReInternBackendApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ytiwa\Downloads\Relntern-main\BackEnd\reIntern-backend\src\test\resources
