@@ -72,7 +72,6 @@ public class RoleController {
 			internrepository.save(interndetails);
 	        result.put("result", "User saved successfully");
 
-
 		}
 		return result;
 
