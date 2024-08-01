@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,37 +12,26 @@
       height: 50px;
       border-radius: 50%;
     }
-
     button:hover {
       background-color: #4CAF50;
       color: white;
       transition: ease 0.5s;
     }
-
     @keyframes typing {
-      from {
-        width: 0;
-      }
+      from { width: 0; }
     }
-
     @keyframes blink {
-      50% {
-        border-color: transparent;
-      }
+      50% { border-color: transparent; }
     }
-
     #dashboard-menu:hover {
       transform: translate(-1.5%, -1.5%);
       transition: transform 0.45s;
     }
-
-    #table-div{
+    #table-div {
       margin-bottom: 10px;
     }
   </style>
-
 </head>
-
 <body class="md:px-6 h-auto bg-white-100">
   <nav>
     <header class="py-4">
@@ -52,12 +40,11 @@
           <img class="mx-auto md:h-16 h-12 w-auto cursor-pointer"
             src="https://1000logos.net/wp-content/uploads/2021/08/Reliance-Industries-Limited-RIL-Logo-500x314.jpg"
             alt="Your Company" (click)="navigateTo()">
-
         </div>
         <nav>
           <ul class="flex space-x-4 text-black">
             <li>
-              <a><h2 class=" text-black font-bold py-2 px-4 rounded mt-4">{{roledesc}}</h2></a>
+              <a><h2 class="text-black font-bold py-2 px-4 rounded mt-4">{{roledesc}}</h2></a>
             </li>
             <li id="Add_Mentor"><button type="button"
                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
@@ -68,7 +55,6 @@
             <li id="Add_Mentor"><button type="button"
                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
                 (click)="logout()">Logout</button></li>
-
           </ul>
         </nav>
       </div>
@@ -80,7 +66,6 @@
       <li class="breadcrumb-item active" aria-current="page">Add Mentor</li>
     </ol>
   </nav>
-
   <main class="container mx-auto mt-8 px-4">
     <div class="bg-white rounded-lg shadow-lg p-8">
       <h2 class="text-2xl font-bold mb-4">Add Mentor</h2>
@@ -90,39 +75,37 @@
             <label class="block text-gray-700 font mb-2" for="mentorname">Mentor Name</label>
             <input type="text" id="mentorname" name="mentorname"
               class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter Mentor name" #mentorname (ngModel)="mentorname" required>
+              placeholder="Enter Mentor name" [(ngModel)]="mentorDetails.mentorname" #mentorname="ngModel" required>  
           </div>
           <div>
             <label class="block text-gray-700 font mb-2" for="mentoremail">Mentor Email</label>
             <input type="email" id="mentoremail" name="mentoremail"
               class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter mentor email" #mentoremail (ngModel)="mentoremail" required>
+              placeholder="Enter mentor email" [(ngModel)]="mentorDetails.mentoremail" #mentoremail="ngModel" required email>
           </div>
-
           <div>
-            <label class="block text-gray-700 font mb-2" for="project">L1 Name</label>
+            <label class="block text-gray-700 font mb-2" for="l1name">L1 Name</label>
             <input type="text" id="l1name" name="l1name"
               class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter L1 name" #l1name (ngModel)="l1name" required>
+              placeholder="Enter L1 name" [(ngModel)]="mentorDetails.l1name" #l1name="ngModel" required>
           </div>
           <div>
-            <label class="block text-gray-700 font mb-2" for="project">L1 Email</label>
-            <input type="text" id="l1email" name="l1email"
+            <label class="block text-gray-700 font mb-2" for="l1email">L1 Email</label>
+            <input type="email" id="l1email" name="l1email"
               class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter L1 Email" #l1email (ngModel)="l1email" required>
+              placeholder="Enter L1 Email" [(ngModel)]="mentorDetails.l1email" #l1email="ngModel" required>
           </div>
-
-          <div  class="col-span-2">
-            <label class="block text-gray-700 font mb-2" for="jobRole">Role</label>
+          <div class="col-span-2">
+            <label class="block text-gray-700 font mb-2" for="Role">Role</label>
             <input type="text" id="Role" name="Role"
               class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-              #Role (ngModel)="Role" placeholder="Ex. Full-Stack Developer" required>
+              placeholder="Ex. Full-Stack Developer" [(ngModel)]="mentorDetails.Role" #Role="ngModel" required>
           </div>
           <div class="col-span-2">
             <label class="block text-gray-700 font mb-2" for="association">Association</label>
             <select id="association" name="association"
               class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-              #association (ngModel)="association" required>
+              [(ngModel)]="mentorDetails.association" #association="ngModel" required>
               <option value="" disabled selected>Select association</option>
               <option value="PetChem IT">PetChem IT</option>
               <option value="Finance">Finance</option>
@@ -131,22 +114,20 @@
             </select>
           </div>
         </div>
-
         <div class="mt-6">
           <ul class="flex space-x-4 text-black">
             <li> <button type="submit"
                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 Save
               </button> </li>
-            <li> <button type="cancel" (click)="navigateTo()"
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" style=" background-color: #7c0d0d;">
+              <li> <button type="button" (click)="navigateTo()"
+                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 Cancel
               </button> </li>
           </ul>
         </div>
-
       </form>
     </div>
   </main>
-
 </body>
+</html>

@@ -1,9 +1,7 @@
 package com.reIntern.model;
 
 import java.sql.Date;
-
 import java.util.List;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -42,11 +40,11 @@ public class Intern {
     private String location;
     private Date dob;
     private String semester;
-    private String password;
     private int userId;
     
     private String remarks;
     private String domainid;
+    
     private boolean isActive;
     
     public boolean getIsActive() {
@@ -104,15 +102,6 @@ public class Intern {
 	public void setSemester(String semester) {
 		this.semester = semester;
 	}
-	
-	public String getPassword() {
-		return password;
-	}
-	
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	
 	@OneToMany(targetEntity = Task.class ,cascade = CascadeType.ALL)
     @JoinColumn(name = "Intern_id", referencedColumnName = "id")
     private List<Task> task;
@@ -315,4 +304,6 @@ public class Intern {
 				+ ", semester=" + semester + ", task=" + task + ", description=" + description + ", start=" + start
 				+ ", end=" + end + "]";
 	}
+    
+    
 }

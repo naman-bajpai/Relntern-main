@@ -171,15 +171,9 @@
     </style>
 </head>
 <body class="">
-    <!-- <button class="" id="close-button" (click)="closeDialog()">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-    </button> -->
     <div class="flex justify-end">
         <button  (click)="closeDialog()"
-                class="font-bold rounded-lg text-lg px-4 py-1.5 text-center mt-2 mr-2 text-white bg-gradient-to-r from-red-500 via-red-700 to-red-900 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-blue-800/80">
+               class="font-bold rounded-lg text-lg px-4 py-1.5 text-center mt-2 mr-2 text-black bg-slate-300">
                 X
         </button>
     </div>
@@ -196,7 +190,6 @@
                 <div class="info-item"><strong>Email: </strong>{{ internProfile.email }}</div>
                 <div class="info-item"><strong>Phone: </strong>{{ internProfile.phone }}</div>
                 <div class="info-item"><strong>Location: </strong>{{ internProfile.location }}</div>
-                <!-- <div class="info-item"><strong>Reference Name: </strong> {{internProfile.reference}}</div> -->
                 <div class="info-item"><strong>Linkedin URL: </strong> {{internProfile.linkedlink}}</div>
                 <div class="info-item"><strong>Quarter: </strong> {{internProfile.quarter}}</div>
             </div>
@@ -204,10 +197,6 @@
             <div class="grid-item">
                 <h3 class="section-title"><u>Project Details</u></h3>
                 <div class="info-item"><strong>Project Name: </strong>{{ internProfile.projectname }}</div>
-                <!-- <div class="info-item"><strong>Project Status: </strong>{{internProfile.projectstatus}}</div> -->
-                <!-- <div class="progress-bar-container">
-                    <div class="progress-bar"></div>
-                </div> -->
                 <div class="info-item"><strong>Start Date: </strong> {{ internProfile.startDate}}</div>
                 <div class="info-item"><strong>End Date: </strong> {{ internProfile.endDate}}</div>
             </div>

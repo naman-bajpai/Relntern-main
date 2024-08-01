@@ -72,9 +72,6 @@ export class LoginComponent implements OnInit {
   reloadPage() {
     window.location.reload()
   }
-
-
-
   ngOnInit() {
   }
 
@@ -82,6 +79,4 @@ export class LoginComponent implements OnInit {
   goToPage(pageName: string): void {
     this.router.navigate([`${pageName}`]);
   }
-
-
 }
