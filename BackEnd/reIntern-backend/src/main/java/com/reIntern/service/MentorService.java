@@ -20,7 +20,7 @@ public class MentorService {
     
     public Mentor getMentorByMentoruserid(int mentoruserid){
     	try {
-    		return mentorRepository.findByMentoruserid(mentoruserid).get();
+    		return mentorRepository.findByMentoruserid( mentoruserid);
     	}
     	catch(Exception ex) {
             System.out.println(ex);
@@ -35,5 +35,10 @@ public class MentorService {
     public void deleteMentor(Integer mentorid) {
         mentorRepository.deleteById(mentorid);
     }
+
+//	public Mentor mentorEmail() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 }

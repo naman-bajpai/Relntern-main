@@ -34,7 +34,7 @@ public class Mentor {
 		this.mentoruserid = mentoruserid;
 	}
 	@ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinTable(name = "USER_ROLE",
+    @JoinTable(name = "USER_R OLE",
             joinColumns = {
                     @JoinColumn(name="USER_ID")
 

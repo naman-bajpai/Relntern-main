@@ -1,19 +1,18 @@
-package com.reIntern.model;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         package com.reIntern.model;
 
 import jakarta.persistence.Id;
+
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 
 @Entity
 public class Role {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     private String username;
     private String password;
     private String role;
+
 
     public String getPassword() {
         return password;
@@ -22,11 +21,10 @@ public class Role {
         this.password = password;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
-
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
     public String getUsername() {
@@ -42,19 +40,21 @@ public class Role {
         this.role = role;
     }
 
-    // Constructor without 'id' parameter
-    public Role(String username, String password, String role) {
+    public Role(int id, String username, String password, String role) {
+        super();
+        this.id = id;
         this.username = username;
         this.password = password;
         this.role = role;
     }
-
     public Role() {
         super();
+        // TODO Auto-generated constructor stub
     }
-
     @Override
     public String toString() {
         return "Role [id=" + id + ", username=" + username + ", password=" + password + ", role=" + role + "]";
     }
+
+
 }

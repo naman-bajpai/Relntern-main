@@ -45,6 +45,7 @@ import { ClarityModule } from '@clr/angular';
 import { MatMenuModule } from '@angular/material/menu';
 import { TaskStatusComponent } from './task-status/task-status.component';
 import { HeaderComponent } from './header/header.component';
+import { HeadersComponent } from './headers/headers.component';
 
 
 
@@ -79,7 +80,8 @@ import { HeaderComponent } from './header/header.component';
     TaskdeleteComponent,
     SignupComponent,
     TaskStatusComponent,
-    HeaderComponent
+    HeaderComponent,
+    HeadersComponent
   ],
   imports: [
     BrowserModule,

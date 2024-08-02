@@ -18,12 +18,4 @@ public class MailController {
 
 	@Autowired
 	private EmailService emailService;
-	
-//	@PostMapping("/send/{mail}")
-////	public String sendMail(@PathVariable String mail,@RequestBody MailStructure mailstructure) {
-//	public String sendMail(@PathVariable String mail) {
-////		emailService.sendEmail(mail, mailstructure);
-//		emailService.sendEmail(mail);
-//		return "successfully sent mail!!";
-//	}
 }

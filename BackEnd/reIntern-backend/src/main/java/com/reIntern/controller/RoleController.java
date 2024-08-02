@@ -67,8 +67,10 @@ public class RoleController {
 			newuser.setRole("intern");
 			result.put("result", "User  saved Successfully");
 			newuser = userrepo.save(newuser);
+
+			interndetails.setUserId(newuser.getId());
 			internrepository.save(interndetails);
-			result.put("result", "User  saved Successfully");
+	        result.put("result", "User saved successfully");
 
 		}
 		return result;

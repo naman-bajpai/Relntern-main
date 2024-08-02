@@ -16,7 +16,8 @@ import com.reIntern.model.upload;
 import com.reIntern.service.UploadService;
 
 @RestController
-@CrossOrigin(allowedHeaders = "*", origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/api")
 public class UploadController {
 	
 	@Autowired
@@ -28,7 +29,7 @@ public class UploadController {
 	}
 	
 	@GetMapping("/getInternDocument/{id}")
-	private List<upload> getDocumentByInternId(@PathVariable int id) {
+	public List<upload> getDocumentByInternId(@PathVariable int id) {
 		return uploadService.getDocumentByInternId(id);
 	}
 
