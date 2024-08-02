@@ -1,75 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Relntern Manager</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
-  <style>
-    .avatar {
-      vertical-align: middle;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-    }
-
-    button:hover {
-      background-color: #4CAF50;
-      color: white;
-      transition: ease 0.5s;
-    }
-
-    @keyframes typing {
-      from {
-        width: 0;
-      }
-    }
-
-    @keyframes blink {
-      50% {
-        border-color: transparent;
-      }
-    }
-
-    #dashboard-menu:hover {
-      transform: translate(-1.5%, -1.5%);
-      transition: transform 0.45s;
-    }
-
-  </style>
-</head>
-
-<body class="md:px-6 h-auto bg-white">
-  <nav>
-    <header class=" py-4">
-      <div class="container mx-auto flex justify-between items-center px-4">
-        <div class="text-black text-xl font-bold flex items-center">
-          <img class="mx-auto md:h-16 h-12 w-auto cursor-pointer"
-            src="https://1000logos.net/wp-content/uploads/2021/08/Reliance-Industries-Limited-RIL-Logo-500x314.jpg"
-            alt="Your Company" (click)="goToPage('dashboard')">
-        </div>
-        <div>
-          <div class="flex space-x-4 text-black">
-            <div>
-              <a><div class="italic text-xl text-black font-bold py-2 px-4 rounded mt-4">
-                  {{roledesc}}</div></a>
-              </div>
-            <div id="Add_Mentor"><button type="button"
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
-                (click)="goToPage('list')">Active Interns</button></div>
-            <div id="Add_Mentor"><button type="button"
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
-                (click)="goToPage('mentorlist')">Mentor List</button></div>
-            <div id="Add_Mentor"><button type="button"
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
-                (click)="logout()">Logout</button></div>
-            </div>
-        </div>
-      </div>
-    </header>
-  </nav>
-
+<app-headers></app-headers>
   <nav aria-label="breadcrumb" class="mt-5">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a (click)="navigateTo()"><mat-icon>home</mat-icon></a></li>
@@ -106,4 +35,4 @@
     </div>
     <span class="m-4"></span>
     </div>
-    </body>
+    

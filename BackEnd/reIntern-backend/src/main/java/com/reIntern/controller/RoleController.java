@@ -38,7 +38,7 @@ public class RoleController {
 	private InternRepository internrepository;
 
 	@Autowired
-	private UserRepositry userrepo;
+	private userRepositry userrepo;
 
 	@PostMapping("/validates")
 	public Role UserLogin(@RequestBody JSONObject user) {
