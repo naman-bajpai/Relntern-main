@@ -91,7 +91,7 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div>
-            <label class="block text-gray-700 font mb-2 required" for="mentorname">Mentor Name</label>
+            <label class="block text-gray-700 font mb-2 required" for="mentorname">Mentor Name<span class="text-red-500"> *</span></label>
             <input type="text" id="mentorname" name="mentorname" ngModel
               class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter Mentor name" required #mentorname="ngModel" pattern="[a-zA-Z\s]*"
