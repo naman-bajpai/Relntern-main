@@ -11,6 +11,15 @@ export class AuthService {
  
   constructor(private http:HttpClient) { }
 
+  isAuthenticated(): boolean {
+    return !!localStorage.getItem('role');
+  }
+
+  getRole(): string | null {
+    return localStorage.getItem('role');
+  }
+
+
   getAll(){
     return this.http.get('http://localhost:3000/interns');
   }
