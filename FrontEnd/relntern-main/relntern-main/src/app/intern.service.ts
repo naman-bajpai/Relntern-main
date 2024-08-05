@@ -147,5 +147,8 @@ export class InternService {
     this.dataSource.next(data);
   }
 
+  public sendEmail(body:any) {
+    return this.http.post(this.API + '/email/send', body);
+  }
   
 }

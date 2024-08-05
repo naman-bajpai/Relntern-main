@@ -103,7 +103,7 @@
           </div>
 
           <div>
-            <label class="block text-gray-700 font mb-2 required" for="mentoremail">Mentor Email</label>
+            <label class="block text-gray-700 font mb-2 required" for="mentoremail">Mentor Email<span class="text-red-500"> *</span></label>
             <input type="email" id="mentoremail" name="mentoremail" ngModel
               class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter mentor email" required #mentoremail="ngModel" pattern="^[^\d\s]+@[^\d\s]+\.[^\d\s]+$"
@@ -115,7 +115,7 @@
           </div>
 
           <div>
-            <label class="block text-gray-700 font mb-2 required" for="l1name">L1 Name</label>
+            <label class="block text-gray-700 font mb-2 required" for="l1name">L1 Name<span class="text-red-500"> *</span></label>
             <input type="text" id="l1name" name="l1name" ngModel
               class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter L1 name" required #l1name="ngModel" pattern="[a-zA-Z\s]*"
@@ -127,7 +127,7 @@
           </div>
 
           <div>
-            <label class="block text-gray-700 font mb-2 required" for="l1email">L1 Email</label>
+            <label class="block text-gray-700 font mb-2 required" for="l1email">L1 Email<span class="text-red-500"> *</span></label>
             <input type="email" id="l1email" name="l1email" ngModel
               class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter L1 Email" required #l1email="ngModel" pattern="^[^\d\s]+@[^\d\s]+\.[^\d\s]+$"
@@ -139,7 +139,7 @@
           </div>
 
           <div class="col-span-2">
-            <label class="block text-gray-700 font mb-2 required" for="Role">Role</label>
+            <label class="block text-gray-700 font mb-2 required" for="Role">Role<span class="text-red-500"> *</span></label>
             <input type="text" id="Role" name="Role" ngModel
               class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Ex. Full-Stack Developer" required #Role="ngModel" pattern="[a-zA-Z\s]*"
@@ -151,7 +151,7 @@
           </div>
 
           <div class="col-span-2">
-            <label class="block text-gray-700 font mb-2 required" for="association">Association</label>
+            <label class="block text-gray-700 font mb-2 required" for="association">Association<span class="text-red-500"> *</span></label>
             <select id="association" name="association" ngModel
               class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
               required #association="ngModel" [class.invalid]="association.invalid && (registerForm.submitted || association.touched)">

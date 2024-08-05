@@ -165,7 +165,7 @@ export class AddComponent implements OnInit {
 
     console.log((this.registerForm.get("quarterArray")?.value)?.toString());
     console.log(this.selectedMentor);
-    this.internEmail = this.registerForm.get("email")?.value
+    this.internEmail = this.registerForm.get("email")?.value;
 
     const quarterString: any = (this.registerForm.get("quarterArray")?.value)?.toString()
     // console.log((this.registerForm.get("quarterArray")?.value)?.toString());
@@ -175,10 +175,26 @@ export class AddComponent implements OnInit {
       this.internService.registerIntern(this.registerForm.value).subscribe(
         (resp: any) => {
           console.log('Successful API response:', resp);
-          // this.sendmail();
-          this.sendingEmailToastr();
-          // this.registerForm.reset();
-          this.router.navigate(['/list']);
+          let payload={
+           toEmail: this.internEmail,
+           subject: "Welcome to Relntern",
+           body:"Thank you for registering with Relntern. We are excited to have you onboard!"
+          }
+
+          this.internService.sendEmail(payload).subscribe(
+            (emailResp: any) => {
+              console.log('Email sent successfully:', emailResp);
+              this.sendingEmailToastr();
+              this.router.navigate(['/list']);
+            },
+            (emailErr: any) => {
+              console.log('Error sending email:', emailErr);
+              this.toastr.error("Failed to send email.", "Error", {
+                timeOut: 3000
+              });
+            }
+          );
+          
         },
         (err: any) => {
           console.log('API Error:', err);
