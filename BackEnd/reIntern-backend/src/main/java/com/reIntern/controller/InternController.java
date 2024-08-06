@@ -45,10 +45,10 @@ public class InternController {
     }
 
     @DeleteMapping("/deleteIntern")
-    public void deleteIntern(@RequestParam Integer id) {
-        internService.deleteIntern(id);
-    }
-
+	public void deleteIntern(@RequestParam Integer id) {
+		internService.deleteIntern(id);
+	}
+    
     @PutMapping("/updateIntern")
     public Intern updateIntern(@RequestBody Intern intern) {
         return internService.updateIntern(intern);

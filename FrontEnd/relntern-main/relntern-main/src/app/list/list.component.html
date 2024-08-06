@@ -19,7 +19,7 @@
             <th scope="col" class="py-4 px-4 text-white">View Task</th>
             <th scope="col" class="py-4 px-4 text-white">Update</th>
             <th scope="col" class="py-4 px-4 text-white">Inactive</th>
-            <!-- <th scope="col" class="py-4 px-4 text-white" *ngIf="isMentor || isAdmin">Inactive</th> -->
+            <th scope="col" class="py-4 px-4 text-white">Delete </th>
           </tr>
         </thead>
         <tbody>
@@ -38,6 +38,7 @@
                 class="rounded-lg text-lg px-4 py-1 text-center mr-2 text-white btn btn-primary"
                 (click)="openEdit(interns)">Update</button></td>
             <td class="py-2 px-4" *ngIf="isMentor || isAdmin"><button class="rounded-lg text-lg px-4 py-1 text-center mr-2 text-white btn btn-primary" (click)="openDialog(interns.id)">Inactive</button></td>
+            <td class="py-2 px-4" *ngIf="isAdmin || isMentor"><button class="rounded-lg text-lg px-4 py-1 text-center mr-2 text-white btn btn-primary" (click)="deleteIntern(interns.id)">Delete</button></td>
           </tr>
         </tbody>
       </table>

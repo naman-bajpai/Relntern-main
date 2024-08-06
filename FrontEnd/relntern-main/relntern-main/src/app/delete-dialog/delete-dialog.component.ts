@@ -33,6 +33,7 @@ export class DeleteDialogComponent {
     this.internService.deleteIntern(this.data.id).subscribe(
       (resp) => {
         console.log(resp);
+        // Update the internDetails after deleting
         this.internDetails = this.internDetails.filter((i: any) => i.id !== intern.id);
         this.closeDialog();
         this.router.navigate(['/'], {skipLocationChange: true}).then(() => this.router.navigate(['/list']));

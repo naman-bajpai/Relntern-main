@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogBodyComponent } from '../dialog-body/dialog-body.component';
 import { UpdateDialogBodyComponent } from '../update-dialog-body/update-dialog-body.component';
 import { InternprofileComponent } from '../internprofile/internprofile.component';
+import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
 
 @Component({
   selector: 'app-list',
@@ -39,17 +40,6 @@ else{
   }
 }
 
-  // getInterns(): void {
-  //   this.internService.getInterns().subscribe(
-  //     (resp) => {
-  //       console.log(resp);
-  //       this.internDetails = resp;
-  //     },
-  //     (err) => {
-  //       console.log(err);
-  //     }
-  //   );
-  // }
   getActiveInterns(): void {
     this.internService.getActiveInterns().subscribe(
       (resp) => {
@@ -62,14 +52,12 @@ else{
     );
   }
 
-  deleteIntern(interns: { id: any; }) {
-    this.internService.deleteIntern(interns.id).subscribe(
-      (resp) => {
-        console.log(resp);
-        this.internDetails = resp;
-      },
-      (err) => console.log(err)
-    );
+  deleteIntern(intern: any): void {
+    this.matDialog.open(DeleteDialogComponent, {
+      width: '500px',
+      height: '140px',
+      data: intern
+    });
   }
 
   openEdit(intern: any): void {
