@@ -1,82 +1,55 @@
- <html lang="en">   
-    <nav>
-      <header class="py-4">
-        <div class="container mx-auto flex justify-between items-center" style=left:50px;>
-          <div class="text-black text-xl font-bold flex items-center" style=margin-left:-65px;>
-            <img
-              class="mx-auto md:h-16 h-12 w-auto"
-              src="https://1000logos.net/wp-content/uploads/2021/08/Reliance-Industries-Limited-RIL-Logo-500x314.jpg"
-              alt="Your Company"
-              (click)="goToPage('dashboard')"
-            />
-          </div>
-          <nav>
-            <ul class="flex space-x-4 text-black">
-              <li>
-                <a>
-                  <h2
-                    class="text-black font-bold py-1 px-4 rounded mt-4 italic"
-                  >
-                    {{ roledesc }}
-                  </h2>
-                </a>
-              </li>
-              <div id="Add_Mentor">
-                <button
-                  type="button"
-                  [ngClass]="{
+<nav>
+  <header class="py-4">
+    <div class="container mx-auto flex justify-between items-center" style=left:50px;>
+      <div class="text-black text-xl font-bold flex items-center" style=margin-left:-65px;>
+        <img class="mx-auto md:h-16 h-12 w-auto"
+          src="https://1000logos.net/wp-content/uploads/2021/08/Reliance-Industries-Limited-RIL-Logo-500x314.jpg"
+          alt="Your Company" (click)="goToPage('dashboard')" />
+      </div>
+      <nav>
+        <ul class="flex space-x-4 text-black">
+          <li>
+            <a>
+              <h2 class="text-black font-bold py-1 px-4 rounded mt-4 italic">
+                {{ roledesc }}
+              </h2>
+            </a>
+          </li>
+          <div id="Add_Mentor">
+            <button type="button" [ngClass]="{
                     'bg-blue-500 hover:bg-blue-700': !isCurrentRoute('/list'),
                     'bg-blue-700': isCurrentRoute('/list')
-                  }"
-                  class="text-white font-bold py-2 px-4 rounded mt-4"
-                  (click)="goToPage('list')"
-                >
-                  Active Interns
-                </button>
-              </div>
-              <div id="Add_Mentor">
-                <button
-                  type="button"
-                  [ngClass]="{
+                  }" class="text-white font-bold py-2 px-4 rounded mt-4" (click)="goToPage('list')">
+              Active Interns
+            </button>
+          </div>
+          <div id="Add_Mentor">
+            <button type="button" [ngClass]="{
                     'bg-blue-500 hover:bg-blue-700':
                       !isCurrentRoute('/mentorlist'),
                     'bg-blue-700': isCurrentRoute('/mentorlist')
-                  }"
-                  class="text-white font-bold py-2 px-4 rounded mt-4"
-                  (click)="goToPage('mentorlist')"
-                >
-                  Mentor List
-                </button>
-              </div>
+                  }" class="text-white font-bold py-2 px-4 rounded mt-4" (click)="goToPage('mentorlist')">
+              Mentor List
+            </button>
+          </div>
 
-              <li id="Add_Mentor">
-                <button
-                  type="button"
-                  [ngClass]="{
+          <li id="Add_Mentor">
+            <button type="button" [ngClass]="{
                     'bg-blue-500 hover:bg-blue-700':
                       !isCurrentRoute('/inactive'),
                     'bg-blue-700': isCurrentRoute('/inactive')
-                  }"
-                  class="text-white font-bold py-2 px-4 rounded mt-4"
-                  (click)="goToPage('inactive')"
-                  *ngIf="isMentor || isAdmin"
-                >
-                  Past Interns
-                </button>
-              </li> 
+                  }" class="text-white font-bold py-2 px-4 rounded mt-4" (click)="goToPage('inactive')"
+              *ngIf="isMentor || isAdmin">
+              Past Interns
+            </button>
+          </li>
 
-              <div>
-                <i
-                  class="fas fa-sign-out-alt py-0 px-1 mt-4 text-red-700 hover:text-red-800 cursor-pointer"
-                  style="font-size: 35px;"
-                  alt="Logout"
-                  (click)="logout()"
-                  title="Logout"  
-                ></i>
-              </div>
-            </ul>
-          </nav>
-        </div>
-      </header>
-    </nav>
- </html>
+          <div>
+            <i class="fas fa-sign-out-alt py-0 px-1 mt-4 text-red-700 hover:text-red-800 cursor-pointer"
+              style="font-size: 35px;" alt="Logout" (click)="logout()" title="Logout"></i>
+          </div>
+        </ul>
+      </nav>
+    </div>
+  </header>
+</nav>

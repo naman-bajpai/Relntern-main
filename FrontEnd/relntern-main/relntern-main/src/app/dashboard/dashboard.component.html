@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Relntern Manager</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
-  <!-- Add this script section in the head of your HTML -->
 </head>
 
 <body class="md:px-6 h-auto bg-white">
@@ -21,20 +20,13 @@
         </div>
         <div>
           <div class="flex space-x-4 text-black">
-            <!-- <li id="Add_Mentor"><button type="button"
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
-                (click)="goToPage('inactive')">Past Interns</button></li>
-            <li id="Add_Mentor"><button type="button"
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
-                (click)="goToPage('addmentor')">Add Mentor</button></li>
-            <li id="Add_Mentor"><button type="button"
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
-                (click)="goToPage('mentorlist')">Mentor List</button></li> -->
-                <div>
-                  <a><div class="text-2xl text-black font py-2 px-4 rounded mt-3">
-                   Logged in as {{roledesc}}</div ></a>
-                </div>
-            <div id="Add_Mentor"><button type="button"
+            <!-- <div>
+              <a>
+                <div class="text-2xl text-black font py-2 px-4 rounded mt-3">
+                  Logged in as {{roledesc}}</div>
+              </a>
+            </div> -->
+            <div id="Logout"><button type="button"
                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
                 (click)="logout()">Logout</button></div>
 
@@ -48,95 +40,64 @@
       <li class="breadcrumb-item active" aria-current="page">Home</li>
     </ol>
   </nav>
-  <main class="container mx-auto mt-8 px-4 overflow">
-    <!-- <h2 class="text-2xl font-bold mb-4">Welcome to Relntern </h2> -->
-    <!-- <p class="text-gray-700 mb-4">Choose an option below:</p> -->
+  <main class="container mx-auto mt-8 px-4">
+    <h2 class="text-2xl font-bold mb-4">Welcome to Relntern </h2>
+    <p class="text-gray-700 mb-4"> Logged in as {{roledesc}}</p>
 
-    <div class="md:flex md:justify-between">
-
-      
-      <div class="card w-full md:wx-1/3">
-        <div class="md:pt-4 md:text-4xl text-black flex items-center justify-center ">Add Interns</div>
-        <button (click)="goToPage('add')" class="md:px-28 md:py-4 text-center md:text-2xl" >Add <mat-icon class="flex-row items-center justify-center pt-1">add_box</mat-icon></button>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
+      <div class="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl" id="dashboard-menu">
+        <h3 class="text-xl font-bold mb-2" id="add-intern-text">Add Interns</h3>
+        <!-- <p class="text-gray-700">Click here to add a new intern</p> -->
+        <button type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+          (click)="goToPage('add')">Add Intern</button>
       </div>
 
-      
-      <div class="card w-full md:w-1/3">
-        <div class="pt-4 md:text-4xl flex items-center justify-center text-black">List of Interns</div>
-        <button (click)="goToPage('list')" class="md:px-28 md:py-4 text-center md:text-2xl" >View <mat-icon class="flex-row items-center justify-center pt-1">view_list</mat-icon></button>
+      <div class="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl" id="dashboard-menu">
+        <h3 class="text-xl font-bold mb-2">List of Interns</h3>
+        <!-- <p class="text-gray-700">View list of interns</p> -->
+        <button type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+          (click)="goToPage('list')">View List</button>
       </div>
-      
-      <div class="card w-full md:w-1/3">
-        <div class="pt-4 md:text-4xl flex items-center justify-center  ">View Schedule</div>
-        <button (click)="goToPage('schedule')" class="md:px-28 md:py-4 text-center md:text-2xl" >View <mat-icon class="flex-row items-center justify-center pt-1">sort</mat-icon></button>
+      <div class="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl" id="dashboard-menu">
+        <h3 class="text-xl font-bold mb-2">Schedule</h3>
+        <!-- <p class="text-gray-700">Click here to view available slots</p> -->
+        <button type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+          (click)="goToPage('schedule')">Schedule</button>
       </div>
-    </div>
-
-    <div class=" mt-4 md:flex md:justify-between">
-
-      
-      <div class="card w-full md:w-1/3">
-        <div class="pt-4 md:text-4xl flex items-center justify-center ">Inactive Interns</div>
-        <button (click)="goToPage('inactive')" class="md:px-28 md:py-4 text-center md:text-2xl" >View <mat-icon class="flex-row items-center justify-center pt-1">view_list</mat-icon></button>
+      <div class="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl" id="dashboard-menu">
+        <h3 class="text-xl font-bold mb-2">Past Interns</h3>
+        <!-- <p class="text-gray-700">Click here to view the past interns</p> -->
+        <button type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+          (click)="goToPage('inactive')">View List</button>
       </div>
-      
-      <div class="card w-full md:w-1/3">
-        <div class="pt-4 md:text-4xl flex items-center justify-center ">Add Mentor</div>
-        <button (click)="goToPage('addmentor')" class="md:px-28 md:py-4 text-center md:text-2xl" >Add <mat-icon class="flex-row items-center justify-center pt-1">add_box</mat-icon></button>
+      <div class="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl" id="dashboard-menu">
+        <h3 class="text-xl font-bold mb-2">Add Mentor</h3>
+        <!-- <p class="text-gray-700">Click here to add mentor</p> -->
+        <button type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+          (click)="goToPage('addmentor')">Add Mentor</button>
       </div>
-      
-      <div class="card w-full md:w-1/3">
-        <div class="pt-4 md:text-4xl flex items-center justify-center ">Mentor List</div>
-        <button (click)="goToPage('mentorlist')" class="md:px-28 md:py-4 text-center md:text-2xl" >View <mat-icon class="flex-row items-center justify-center pt-1">view_list</mat-icon></button>
+      <div class="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl" id="dashboard-menu">
+        <h3 class="text-xl font-bold mb-2">Mentor List</h3>
+        <!-- <p class="text-gray-700">Click here to view mentor list</p> -->
+        <button type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+          (click)="goToPage('mentorlist')">View Mentor list</button>
       </div>
     </div>
   </main>
 
-<!-- <div class="container mx-auto mt-8 px-4" >
-  <h2>Scroll Down to view recent interns</h2>
-</div>
-
-  <div class="container mx-auto mt-8 px-4" id="table-body" id="table-pagination">
-    <div id="table-div" class="bg-white rounded-lg shadow-lg">
-      <table class="min-w-full table-auto">
-        <thead>
-          <tr class="bg-gray-200">
-            <th scope="col" class="py-2 px-4">Intern ID</th>
-            <th scope="col" class="py-2 px-4">Full Name</th>
-            <th scope="col" class="py-2 px-4">Mentor</th>
-            <th scope="col" class="py-2 px-4">End Date</th>
-            <th scope="col" class="py-2 px-4">Association</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let interns of internDetails" id="dashboard-list" (click)="openDialog(interns)">
-            <td class="py-2 px-4">{{interns.id}}</td>
-            <td class="py-2 px-4"><button id="view-profile" (click)="openDialog(interns)">{{interns.fullname}}</button>
-            </td>
-            <td class="py-2 px-4">{{interns.mentor}}</td>
-            <td class="py-2 px-4">{{interns.endDate}}</td>
-            <td class="py-2 px-4">{{interns.association}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div> -->
 
 </body>
 
 
 <footer class="p-4 bg-white md:p-8 dark:bg-gray-800 mt-12">
   <div class="mx-auto max-w-screen-xl text-center">
-      <!-- <a href="#" class="flex justify-center items-center text-2xl font-semibold text-gray-900 dark:text-white">
-          <svg class="mr-2 h-8" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg"></svg>
-          Relntern   
-      </a> -->
 
-      <p class=" text-gray-500 dark:text-gray-400">Relntern- Managing made easy</p>
-      <!-- <ul class="flex flex-wrap justify-center items-center mb-6 text-gray-900 dark:text-white">
-          
-      </ul> -->
-      <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023-2026 <a href="#" class="hover:underline">Relntern</a>. Developed by Intern.</span>
+
+    <p class=" text-gray-500 dark:text-gray-400">Relntern- Managing made easy</p>
+
+    <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023-2026 <a href="#"
+        class="hover:underline">Relntern</a>. For Interns, By Interns.</span>
   </div>
 </footer>
+
 </html>

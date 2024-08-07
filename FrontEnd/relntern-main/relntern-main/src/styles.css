@@ -16,8 +16,11 @@
     margin-left: 50px;
     margin-right: 50px;
 }
-
+html{
+    height: 100%;
+}
 body {
+    height: 100%;
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }

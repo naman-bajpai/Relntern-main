@@ -19,7 +19,7 @@
     <form class="mt-8 space-y-6" [formGroup]="myForm" (ngSubmit)="onSubmit()">
       <div>
         <div class="flex">
-          <label for="email" class="text-lg font-medium text-gray-700 mr-2">Email</label>
+          <label for="email" class="font-medium text-gray-700 mr-2">Email</label>
           <div class="form-text text-danger font flex items-start" *ngIf="email.errors?.['required']">
             *
           </div>
@@ -37,7 +37,7 @@
 
       <div>
         <div class="flex">
-          <label for="password" class="text-lg font-medium text-gray-700 mr-2">Password</label>
+          <label for="password" class="font-medium text-gray-700 mr-2">Password</label>
           <div class="form-text text-danger font flex items-start" *ngIf="password.errors?.['required']">
             *
           </div>
@@ -51,7 +51,7 @@
 
       <div>
         <div class="flex">
-          <label for="confirmPassword" class="text-lg font-medium text-gray-700 mr-2">Re-Enter Password</label>
+          <label for="confirmPassword" class="font-medium text-gray-700 mr-2">Re-Enter Password</label>
           <div class="form-text text-danger font flex items-start" *ngIf="rpwd.errors?.['required']">
             *
           </div>

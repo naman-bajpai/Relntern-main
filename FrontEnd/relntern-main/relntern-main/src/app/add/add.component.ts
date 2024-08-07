@@ -25,8 +25,6 @@ export class AddComponent implements OnInit {
   isintern: boolean = false;
   roledesc: any;
   selectedMentor!: String;
-  // mentors: any[] = [];
-  //quarterarray:string[]=[];
 
   toppingList: string[] = ['Q1', 'Q2', 'Q3', 'Q4'];
   show: boolean = false;
@@ -45,17 +43,11 @@ export class AddComponent implements OnInit {
 
 
   selectmentor(mentor: any) {
-    // console.log(mentor.target.value);
     const selectedMentorName = this.registerForm.get('mentor')?.value;
-    // this.mentors.filter(mentors => mentors.mentorname === selectedMentorName)
     const selectedMentor = this.mentors.find((mentors: any) => { return mentors.mentorname === selectedMentorName });
     console.log(selectedMentor);
     this.registerForm.get('mentoremail')?.setValue(selectedMentor.mentoremail);
     this.test = selectedMentor.mentoremail;
-
-    //  console.log(this.test);
-
-    // this.registerForm.get('mentor')
   }
 
   constructor(
@@ -143,8 +135,6 @@ export class AddComponent implements OnInit {
 
     return null;
   }
-
-  // Date Range Validator
   dateRangeValidator(group: FormGroup): { [key: string]: any } | null {
     const startDate = group.get('startDate')?.value;
     const endDate = group.get('endDate')?.value;
@@ -165,36 +155,19 @@ export class AddComponent implements OnInit {
 
     console.log((this.registerForm.get("quarterArray")?.value)?.toString());
     console.log(this.selectedMentor);
-    this.internEmail = this.registerForm.get("email")?.value;
+    this.internEmail = this.registerForm.get("email")?.value
 
     const quarterString: any = (this.registerForm.get("quarterArray")?.value)?.toString()
-    // console.log((this.registerForm.get("quarterArray")?.value)?.toString());
     this.registerForm.get("quarter")?.setValue(quarterString);
 
     if (this.registerForm.valid) {
       this.internService.registerIntern(this.registerForm.value).subscribe(
         (resp: any) => {
           console.log('Successful API response:', resp);
-          let payload={
-           toEmail: this.internEmail,
-           subject: "Welcome to Relntern",
-           body:"Thank you for registering with Relntern. We are excited to have you onboard!"
-          }
-
-          this.internService.sendEmail(payload).subscribe(
-            (emailResp: any) => {
-              console.log('Email sent successfully:', emailResp);
-              this.sendingEmailToastr();
-              this.router.navigate(['/list']);
-            },
-            (emailErr: any) => {
-              console.log('Error sending email:', emailErr);
-              this.toastr.error("Failed to send email.", "Error", {
-                timeOut: 3000
-              });
-            }
-          );
-          
+          //this.sendmail();
+          this.sendingEmailToastr();
+          // this.registerForm.reset();
+          this.router.navigate(['/list']);
         },
         (err: any) => {
           console.log('API Error:', err);
@@ -205,25 +178,6 @@ export class AddComponent implements OnInit {
       console.log('Form is invalid');
     }
   }
-
-  // sendmail(){    Implemented this in the backend registration
-  //   console.log(this.internEmail);
-  //   const structure = {
-  //     subject: "Joining letter",
-  //     message: "You are being added into the reIntern portal"
-  //   };
-
-  //   // Converting the structure object into the JSON format
-  //   const structureJson = JSON.stringify(structure);
-  //   this.internService.sendRegisterMail(this.internEmail,structureJson).subscribe((data) => {
-  //     console.log('Successful API response:', data);
-  //         this.router.navigate(['/list']);
-  //       },
-  //       (err: any) => {
-  //         console.log('API Error:', err);
-  //       })
-  // }
-
   sendingEmailToastr() {
     this.toastr.success("Sending.....", "Generating email", {
       timeOut: 3000
@@ -302,10 +256,6 @@ export class AddComponent implements OnInit {
     return this.registerForm.get("projectname") as FormControl;
   }
 
-  // get projectstatus(): FormControl {
-  //   return this.registerForm.get("projectstatus") as FormControl;
-  // }
-
   get startDate(): FormControl {
     return this.registerForm.get("startDate") as FormControl;
   }
@@ -357,22 +307,10 @@ export class AddComponent implements OnInit {
     );
   }
 
-  // subscribeToMentorChanges() {
-  //   this.registerForm.get('mentor').valueChanges.subscribe((selectedMentor: string) => {
-  //     // Find the mentor object based on the selected mentor name
-  //     const selectedMentorObject = this.mentors.find((mentor: { mentorname: string; }) => mentor.mentorname === selectedMentor);
-
-  //     // Update the mentorEmail control
-  //     this.registerForm.patchValue({
-  //       mentoremail: selectedMentorObject ? selectedMentorObject.email : ''
-  //     });
-  //   });
-  // }
-
   cancel() {
     this.router.navigate(['/home']);
   }
-  navigateTo(): void {  //this is to navigate to particular dashboard according to their role
+  navigateTo(): void {
     if (this.isAdmin) {
       this.router.navigate([`dashboard`]);
     }

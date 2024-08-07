@@ -67,12 +67,6 @@
             <div id="Add_Mentor"><button type="button"
                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
                 (click)="goToPage('list')">Active Interns</button></div>
-            <!-- <div id="Add_Mentor"><button type="button"
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
-                (click)="goToPage('mentorlist')">Mentor List</button></div>
-            <div id="Add_Mentor"><button type="button"
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
-                (click)="logout()">Logout</button></div> -->
 
           </div>
         </div>
@@ -138,7 +132,7 @@
               class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter email address" formControlName="email">
           </div>
-          
+
 
           <div>
             <div class="md:flex">
@@ -214,7 +208,7 @@
               Age must be between 18 and 100.
             </div>
           </div>
-          
+
 
           <div>
             <div class="md:flex">
@@ -316,22 +310,7 @@
                 *
               </div>
             </div>
-            <!-- <div class="dropdown-multiselect">
-              <button class="border border-gray-300 rounded-md px-3 py-2 w-full flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-blue-500">
-                Choose Quarters
-                <span>&#x25BC;</span>
-              </button>
-              <div class="dropdown-content">
-                <input type="checkbox" id="Q1" name="Q1" value="Q1" formControlName="quarter">
-                <label for="Q1">Q1</label>
-                <input type="checkbox" id="Q2" name="Q2" value="Q2" formControlName="quarter">
-                <label for="Q2">Q2</label>
-                <input type="checkbox" id="Q3" name="Q3" value="Q3" formControlName="quarter">
-                <label for="Q3">Q3</label>
-                <input type="checkbox" id="Q4" name="Q4" value="Q4" formControlName="quarter">
-                <label for="Q4">Q4</label>
-              </div>
-            </div> -->
+
             <div>
               <mat-form-field appearance="fill" id="quarter" name="quarter" class="w-full rounded-lg max-h-16">
                 <mat-label>Select Quarters:</mat-label>
@@ -341,23 +320,6 @@
               </mat-form-field>
             </div>
           </div>
-
-
-
-
-
-          <!-- <div>
-            <div class="md:flex">
-              <label class="text-gray-700 md:mb-2 md:mr-2" for="linkedlink">LinkedIn URL</label>
-              <div class="form-text text-danger font flex items-start" *ngIf="linkedlink.errors?.['required']">
-                *
-              </div>
-            </div>
-            <input type="url" id="linkedlink" name="linkedlink"
-              class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="For ex : www.linkedin.com/profilename " formControlName="linkedlink">
-          </div> -->
-
           <div>
             <div class="md:flex">
               <label class="text-gray-700 md:mb-2 md:mr-2" for="projectname">Project Name</label>
@@ -400,23 +362,6 @@
               class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="" formControlName="mentoremail">
           </div>
-
-
-
-          <!-- <div>
-            <div class="md:flex">
-              <label class="text-gray-700 md:mb-2 md:mr-2" for="projectstatus">Project Status %</label>
-              <div class="form-text text-danger font flex items-start" *ngIf="projectstatus.errors?.['required'] && (projectstatus.touched || projectstatus.dirty)">
-                *
-              </div>
-              <div class="text-danger mr-3 flex items-start italic text-base" *ngIf="projectstatus.errors?.['pattern'] && (projectstatus.touched || projectstatus.dirty)">
-                Invalid %.
-            </div>
-            </div>
-            <input type="text" id="projectstatus" name="projectstatus"
-              class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Please enter the percentage" formControlName="projectstatus">
-          </div> -->
 
           <div>
             <div class="md:flex">
