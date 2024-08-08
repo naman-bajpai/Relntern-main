@@ -41,67 +41,19 @@ export class TaskStatusComponent implements OnInit{
     return this.taskStatusForm.get('status')?.value === 'Completed';
   }
   onActualEndChange(event: Event) {
-    alert("hello");
     // You can perform any additional actions here if needed
   }
 
-  // $("#actualend").change(function () {
-  //   var startDate = document.getElementById("actualstart").value;
-  //   var endDate = document.getElementById("actualend").value;
-
-  //   if((Date.parse(startDate) >= Date.parse(endDate))) {
-  //     alert("End date should be greater than Start date");
-  //     document.getElementById("actualend").value="";
-  //   }
-  // })
   setMinEndDate(): void {
     const startDateValue = this.taskStatusForm.get('actualstart')?.value;
     this.taskStatusForm.get('actualend')?.patchValue(this.startDateValue);
   }
 
-  // startDateFilter = (date: Date | null): boolean => {
-  //   const startDate = this.taskStatusForm.get('actualstart')?.value;
-  //   return startDate ? date && date >= startDate : true;
-  // };
-
-  // startDateFilter = (date: Date): boolean => {
-  //   const startDate = this.taskStatusForm.get('actualstart')?.value as Date | null;
-  //   return this.isStatusCompleted() ? date && date >= startDate! : true;
-  // };
-
-  // endDateFilter = (date: Date): boolean => {
-  //   const endDate = this.taskStatusForm.get('actualend')?.value as Date | null;
-  //   return this.isStatusCompleted() ? date && date >= endDate! : true;
-  // };
-  
-  // endDateValidator(control: any): { [key: string]: boolean } | null {
-  //   const startDate = this.taskStatusForm.get('actualstart')?.value;
-  //   const endDate = control.value;
-
-  //   if (startDate && endDate && startDate > endDate) {
-  //     return { 'endDateBeforeStartDate': true };
-  //   }
-
-  //   return null;
-  // }
-
-  // update(){
-  //   const statusString:any=(this.taskStatusForm.get("status")?.value)?.toString()
-  //   this.taskStatusForm.get("status")?.setValue(statusString);
-  //   this.internService.updateTask(this.taskDetails.id,this.taskStatusForm).subscribe((resp) => {
-  //     console.log('Update Response:', resp);
-
-      
-  //   },(error) => {
-  //     console.error('Error updating task:', error);
-  //   })
-  // }
-
   update() {
-    const formData = this.taskStatusForm.value;  // Extract plain object from form
+    const formData = this.taskStatusForm.value;  
     const statusString: any = formData.status?.toString();
     formData.status = statusString;
-    // this.changeStatus(statusString);
+
     this.successToastr();
     this.internService.updateTask(this.taskDetails.id, formData).subscribe(
       (resp) => {

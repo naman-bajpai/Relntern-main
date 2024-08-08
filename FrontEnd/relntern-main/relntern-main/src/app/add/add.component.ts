@@ -1,13 +1,9 @@
-import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl, ReactiveFormsModule, FormsModule, NgForm, FormArray } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { InternService } from '../intern.service';
 import { Router } from '@angular/router';
-import { OnInit } from '@angular/core';
-import { InvalidDialogComponent } from '../invalid-dialog/invalid-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-import { MatIconModule } from '@angular/material/icon'
 import { ToastrService } from 'ngx-toastr';
-
 
 @Component({
   selector: 'app-add',
@@ -29,7 +25,36 @@ export class AddComponent implements OnInit {
   toppingList: string[] = ['Q1', 'Q2', 'Q3', 'Q4'];
   show: boolean = false;
 
+  constructor(
+    private internService: InternService,
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private matDialog: MatDialog,
+    private toastr: ToastrService
+  ) { }
 
+  registerForm = this.formBuilder.group({
+    fullname: new FormControl("", [Validators.required, Validators.minLength(2), Validators.pattern("[a-zA-Z].*")]),
+    email: new FormControl("", [Validators.required, Validators.email]),
+    role: new FormControl('', [Validators.required]),
+    association: new FormControl('', Validators.required),
+    phone: new FormControl("", [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern("[0-9]*")]),
+    dob: new FormControl('', [Validators.required, this.dateOfBirthValidator]),
+    location: new FormControl('', [Validators.required, Validators.maxLength(25)]),
+    reference: new FormControl('', Validators.required),
+    gradyear: new FormControl('', Validators.required),
+    uniname: new FormControl('', Validators.required),
+    coursename: new FormControl('', Validators.required),
+    semester: new FormControl('', Validators.required),
+    specialization: new FormControl('', Validators.required),
+    quarter: new FormControl('', [Validators.required]),
+    quarterArray: new FormControl('', [Validators.required]),
+    mentor: new FormControl('', [Validators.required, Validators.minLength(2), Validators.pattern("[a-zA-Z].*")]),
+    mentoremail: new FormControl(''),
+    projectname: new FormControl('', Validators.required),
+    startDate: new FormControl('', [Validators.required, this.startDateValidator]),
+    endDate: new FormControl('', [Validators.required, this.endDateValidator]),
+  }, { validators: this.dateRangeValidator });
 
   ngOnInit(): void {
     this.getInterns();
@@ -41,7 +66,6 @@ export class AddComponent implements OnInit {
     });
   }
 
-
   selectmentor(mentor: any) {
     const selectedMentorName = this.registerForm.get('mentor')?.value;
     const selectedMentor = this.mentors.find((mentors: any) => { return mentors.mentorname === selectedMentorName });
@@ -50,14 +74,6 @@ export class AddComponent implements OnInit {
     this.test = selectedMentor.mentoremail;
   }
 
-  constructor(
-    private internService: InternService,
-    private router: Router,
-    private formBuilder: FormBuilder,
-    private matDialog: MatDialog,
-    private toastr: ToastrService
-  ) { }
-
   reset() {
     this.registerForm.reset();
   }
@@ -65,32 +81,7 @@ export class AddComponent implements OnInit {
   togglePasswordVisibility(): void {
     this.show = !this.show;
   }
-  registerForm = this.formBuilder.group({
-    fullname: new FormControl("", [Validators.required, Validators.minLength(2), Validators.pattern("[a-zA-Z].*")]),
-    email: new FormControl("", [Validators.required, Validators.email]),
-    role: new FormControl('', [Validators.required]),
-    association: new FormControl('', Validators.required),
-    phone: new FormControl("", [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern("[0-9]*")]),
-    dob: new FormControl('', [Validators.required, this.dateOfBirthValidator]),
-    location: new FormControl('', [Validators.required, Validators.maxLength(25)]),
-    reference: new FormControl('', Validators.required),
 
-    gradyear: new FormControl('', Validators.required),
-    uniname: new FormControl('', Validators.required),
-    coursename: new FormControl('', Validators.required),
-    semester: new FormControl('', Validators.required),
-    specialization: new FormControl('', Validators.required),
-
-    // linkedlink : new FormControl("",[Validators.required]),
-    quarter: new FormControl('', [Validators.required]),
-    quarterArray: new FormControl('', [Validators.required]),
-    mentor: new FormControl('', [Validators.required, Validators.minLength(2), Validators.pattern("[a-zA-Z].*")]),
-    mentoremail: new FormControl(''),
-    projectname: new FormControl('', Validators.required),
-    // projectstatus: new FormControl('', [Validators.required,Validators.pattern("[0-9]*")]),
-    startDate: new FormControl('', [Validators.required, this.startDateValidator]),
-    endDate: new FormControl('', [Validators.required, this.endDateValidator]),
-  }, { validators: this.dateRangeValidator });
   dateOfBirthValidator(control: FormControl): { [key: string]: any } | null {
     const dob = new Date(control.value);
     const today = new Date();
@@ -125,7 +116,6 @@ export class AddComponent implements OnInit {
     return null;
   }
 
-
   endDateValidator(control: FormControl): { [key: string]: any } | null {
     const endDate = new Date(control.value);
 
@@ -135,6 +125,7 @@ export class AddComponent implements OnInit {
 
     return null;
   }
+
   dateRangeValidator(group: FormGroup): { [key: string]: any } | null {
     const startDate = group.get('startDate')?.value;
     const endDate = group.get('endDate')?.value;
@@ -152,21 +143,19 @@ export class AddComponent implements OnInit {
   }
 
   register() {
-
     console.log((this.registerForm.get("quarterArray")?.value)?.toString());
     console.log(this.selectedMentor);
-    this.internEmail = this.registerForm.get("email")?.value
+    this.internEmail = this.registerForm.get("email")?.value;
 
-    const quarterString: any = (this.registerForm.get("quarterArray")?.value)?.toString()
+    const quarterString: any = (this.registerForm.get("quarterArray")?.value)?.toString();
     this.registerForm.get("quarter")?.setValue(quarterString);
 
     if (this.registerForm.valid) {
       this.internService.registerIntern(this.registerForm.value).subscribe(
         (resp: any) => {
           console.log('Successful API response:', resp);
-          //this.sendmail();
           this.sendingEmailToastr();
-          // this.registerForm.reset();
+          this.sendEmail();
           this.router.navigate(['/list']);
         },
         (err: any) => {
@@ -174,14 +163,33 @@ export class AddComponent implements OnInit {
         }
       );
     } else {
-      // Handle form validation errors
       console.log('Form is invalid');
     }
   }
+
   sendingEmailToastr() {
     this.toastr.success("Sending.....", "Generating email", {
       timeOut: 3000
-    })
+    });
+  }
+
+  sendEmail() {
+    const mailStructure = {
+      email: this.registerForm.get('email')?.value,
+      fullname: this.registerForm.get('fullname')?.value,
+      association: this.registerForm.get('association')?.value,
+      projectname: this.registerForm.get('projectname')?.value,
+      mentor: this.selectedMentor
+    };
+  
+    this.internService.sendEmail(mailStructure).subscribe(
+      (resp: any) => {
+        console.log('Email sent successfully:', resp);
+      },
+      (err: any) => {
+        console.error('Error sending email:', err);
+      }
+    );
   }
 
   get fullname(): FormControl {
@@ -199,59 +207,42 @@ export class AddComponent implements OnInit {
   get association(): FormControl {
     return this.registerForm.get("association") as FormControl;
   }
-
   get phone(): FormControl {
     return this.registerForm.get("phone") as FormControl;
   }
-
   get dob(): FormControl {
     return this.registerForm.get("dob") as FormControl;
   }
-
   get location(): FormControl {
     return this.registerForm.get("location") as FormControl;
   }
-
   get reference(): FormControl {
     return this.registerForm.get("reference") as FormControl;
   }
-
   get gradyear(): FormControl {
     return this.registerForm.get("gradyear") as FormControl;
   }
-
   get uniname(): FormControl {
     return this.registerForm.get("uniname") as FormControl;
   }
-
   get coursename(): FormControl {
     return this.registerForm.get("coursename") as FormControl;
   }
-
   get semester(): FormControl {
     return this.registerForm.get("semester") as FormControl;
   }
-
   get specialization(): FormControl {
     return this.registerForm.get("specialization") as FormControl;
   }
-
-  // get linkedlink(): FormControl {
-  //   return this.registerForm.get("linkedlink") as FormControl;
-  // }
-
   get quarter(): FormControl {
     return this.registerForm.get("quarter") as FormControl;
   }
-
   get mentor(): FormControl {
     return this.registerForm.get("mentor") as FormControl;
   }
-
   get mentoremail(): FormControl {
     return this.registerForm.get("mentoremail") as FormControl;
   }
-
   get projectname(): FormControl {
     return this.registerForm.get("projectname") as FormControl;
   }

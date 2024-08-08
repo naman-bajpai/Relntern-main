@@ -16,8 +16,8 @@ import com.reIntern.model.upload;
 import com.reIntern.service.UploadService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("/api")
+@CrossOrigin(allowedHeaders = "*", origins = "http://localhost:4200")
+@RequestMapping("/uploaddocument")
 public class UploadController {
 	
 	@Autowired
