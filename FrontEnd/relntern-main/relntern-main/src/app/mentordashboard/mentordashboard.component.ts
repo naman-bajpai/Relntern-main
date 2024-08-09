@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { InternService } from '../intern.service';
 import { MatDialog } from '@angular/material/dialog';
+import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
+import { InternprofileComponent } from '../internprofile/internprofile.component';
 import { UpdateDialogBodyComponent } from '../update-dialog-body/update-dialog-body.component';
 
 
@@ -15,41 +17,68 @@ export class MentordashboardComponent {
   mentoremail11: any;
   mentorDetails: any;
   internDetails: any;
+  isAdmin: boolean = false;
+  isMentor: boolean = false;
+  isintern: boolean = false;
+  roledesc: any;
 
-  constructor(private router: Router, private internservice:InternService,private matDialog: MatDialog) { }
+  constructor(private router: Router, private internService: InternService, private matDialog: MatDialog) { }
 
 
-  ngOnInit(): void{
-    console.log(this.router.url);
-    const retrievedInteger:string|null = localStorage.getItem('userId');
-    if (retrievedInteger !== null) {
-      this.userid = parseInt(retrievedInteger, 10);
-     console.log(this.userid);
-     this.mentorByUserId();
-   } else {
-     console.error('Does not exist in localStorage.');
-   }
+  ngOnInit(): void {
+    this.getActiveInterns();
+    this.roledesc=localStorage.getItem("role");
+    // this.validaterole(this.roledesc);
   }
   reloadPage() {
     window.location.reload()
   }
 
-  mentorByUserId(){
-  this.internservice.getMentorByMentoruserid(this.userid).subscribe((data) => {
-    console.log(data);
-    this.mentorDetails=data;
-    this.mentoremail11=data.mentoremail;
-    console.log(this.mentoremail11);
-    
-    this.ActiveInternsByMentor();
-  })
+  // validaterole(roledesc:any){
+  //   if(roledesc=="admin"){
+  //     this.isAdmin=true;
+  //   }
+  //   else if(roledesc=="mentor"){
+  //     this.isMentor=true
+  //   }
+  //   else{
+  //     this.isintern=true;
+  //     }
+  //   }
+
+  openProfile(intern: any): void {
+    this.matDialog.open(InternprofileComponent, {
+      width: '600px',
+      height: '600px',
+      data: intern,
+    });
   }
 
-  ActiveInternsByMentor(): void{
-    this.internservice.getActiveByMentor(this.mentoremail11).subscribe((data) => {
-      console.log(data);
-      this.internDetails=data;
-    })
+
+  deleteIntern(intern: any): void {
+    this.matDialog.open(DeleteDialogComponent, {
+      width: '500px',
+      height: '140px',
+      data: intern
+    });
+  }
+  openDialog(intern: any): void {
+    this.matDialog.open(InternprofileComponent, {
+      width: '600px',
+      height: '600px',
+      data: intern,
+    });
+  }
+  getActiveInterns(): void {
+    this.internService.getActiveInterns().subscribe(
+      (resp) => {
+        console.log(resp);
+        this.internDetails = resp;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
   openEdit(intern: any): void {
     console.log(intern);
@@ -60,18 +89,18 @@ export class MentordashboardComponent {
     });
   }
 
-  logout(){
+  logout() {
     localStorage.removeItem('role')
     localStorage.clear();
     this.router.navigate([``]);
-}
+  }
   goToPage(pageName: string): void {
     this.router.navigate([`${pageName}`]);
   }
 
-  gotopage( internsId : any): void {
+  gotopage(internsId: any): void {
     console.log(internsId);
-    this.router.navigate(['view-task/',internsId]);
+    this.router.navigate(['view-task/', internsId]);
   }
 
 }

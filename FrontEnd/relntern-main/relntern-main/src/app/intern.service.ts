@@ -150,5 +150,13 @@ export class InternService {
   public sendEmail(body: any) {
     return this.http.post(this.API + '/mail/send', body);
   }
-  
+
+  public sendtoHr(body: any) {
+    return this.http.post(this.API + '/mail/sendToHR', body);
+  }
+
+  public sendDeactivate(body: any) {
+    return this.http.post(this.API + '/mail/sendDeactivate', body);
+  }
+
 }
